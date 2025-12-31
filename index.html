@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Árbol de la Vida</title>
+    <style>
+        :root {
+            /* ESTILO: Dark Glassmorphism + Bento Grid */
+            --bg-deep: #050608;
+            --glass-surface: rgba(26, 30, 41, 0.75); 
+            --gold-accent: #d4af37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            
+            /* Fondo con patrón sutil */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 100, 255, 0.08) 0%, transparent 40%);
+        }
+
+        .bento-wrapper {
+            width: 100%;
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .header-label {
+            color: var(--gold-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-left: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* ESTILO GLASSMORPHISM (Efecto Vidrio) */
+        .glass-card {
+            background: var(--glass-surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* MICRO-INTERACCIÓN: Efecto al tocar */
+        .glass-card:active {
+            transform: scale(0.98);
+            border-color: var(--gold-accent);
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        .hero-section {
+            padding: 30px;
+            padding-top: 180px; 
+            position: relative;
+            margin-top: 50px;
+            text-align: center;
+            overflow: visible;
+        }
+
+        /* LOS CÍRCULOS DONDE VA TU LOGO */
+        .tree-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: #0a0a0a; /* Fondo de respaldo */
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
+            
+            /* --- AQUÍ ESTÁ TU LOGO --- */
+            /* Asegúrate de que logo.png esté en la misma carpeta que este HTML */
+            background-image: url('logo.png'); 
+            
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Círculo Principal Grande */
+        .circle-main {
+            width: 200px;
+            height: 200px;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            /* Animación de flotación */
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Círculo Pequeño decorativo */
+        .circle-mini {
+            width: 70px;
+            height: 70px;
+            z-index: 5;
+            opacity: 0.9;
+        }
+        
+        .pos-left { top: 20px; left: 20px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
+            50% { transform: translateX(-50%) translateY(-10px); box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
+        }
+
+        .hero-title {
+            color: var(--gold-accent);
+            margin: 15px 0 10px 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- BENTO GRID (Rejilla inferior) --- */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .bento-item {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 110px;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 800;
+            opacity: 0.5;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .bento-title {
+            color: var(--gold-accent);
+            font-size: 1.1rem;
+            margin: 0 0 5px 0;
+        }
+        
+        .bento-text {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bento-wrapper">
+        <div class="header-label">container</div>
+
+        <div class="glass-card hero-section">
+            <div class="tree-circle circle-mini pos-left"></div>
+            <div class="tree-circle circle-main"></div>
+
+            <h2 class="hero-title">EL ÁRBOL DE LA VIDA DIGITAL</h2>
+            <p class="hero-desc">Una síntesis de luz, conocimiento y conexión digital eterna.</p>
+        </div>
+
+        <div class="grid-layout">
+            
+            <div class="glass-card bento-item">
+                <span class="tag">H2</span>
+                <h3 class="bento-title">Visión</h3>
+                <span class="bento-text">Innovación constante.</span>
+            </div>
+
+            <div class="glass-card bento-item">
+                <span class="tag">H3</span>
+                <h3 class="bento-title">Creación</h3>
+                <span class="bento-text">De idea a al code.</span>
+            </div>
+
+            <div class="glass-card bento-item">
+                <span class="tag">H3</span>
+                <h3 class="bento-title">Futuro</h3>
+                <span class="bento-text">Innovación estable.</span>
+            </div>
+
+            <div class="glass-card bento-item">
+                <span class="tag">40</span>
+                <h3 class="bento-title">Futuro</h3>
+                <span class="bento-text">Escalabilidad infinita.</span>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

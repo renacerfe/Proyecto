@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Árbol de la Vida</title>
+    <title>Jesús el Árbol de la Vida</title>
     <style>
         :root {
-            /* ESTILO: Dark Glassmorphism + Bento Grid */
+            /* PALETA: Dark Glassmorphism + Dorado */
             --bg-deep: #050608;
-            --glass-surface: rgba(26, 30, 41, 0.75); 
+            --glass-surface: rgba(26, 30, 41, 0.9); /* Más opaco para lectura */
             --gold-accent: #d4af37;
             --gold-glow: rgba(212, 175, 55, 0.4);
             --text-main: #ffffff;
             --text-muted: #8b9bb4;
             --border-glass: rgba(255, 255, 255, 0.1);
+            --danger: #ff4757; /* Para errores o conflictos */
+            --success: #2ed573; /* Para resolución */
         }
 
         body {
@@ -25,32 +27,65 @@
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            overflow-x: hidden; /* Evita scroll horizontal en transiciones */
             
-            /* Fondo con patrón sutil */
             background-image: 
                 radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0, 100, 255, 0.08) 0%, transparent 40%);
         }
 
-        .bento-wrapper {
+        .app-container {
             width: 100%;
             max-width: 480px;
+            position: relative;
+        }
+
+        /* --- SISTEMA DE PANTALLAS (SPA) --- */
+        .screen {
+            display: none; /* Ocultas por defecto */
+            animation: fadeIn 0.5s ease-out;
+            width: 100%;
+        }
+
+        .screen.active {
+            display: block; /* Solo la activa se ve */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header común */
+        .header-nav {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
             gap: 15px;
         }
 
-        .header-label {
+        .btn-back {
+            background: none;
+            border: 1px solid var(--gold-accent);
             color: var(--gold-accent);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-left: 5px;
-            margin-bottom: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* ESTILO GLASSMORPHISM (Efecto Vidrio) */
+        .header-title {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- ESTILOS COMPARTIDOS --- */
         .glass-card {
             background: var(--glass-surface);
             backdrop-filter: blur(16px);
@@ -58,160 +93,225 @@
             border: 1px solid var(--border-glass);
             border-radius: 24px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            margin-bottom: 15px;
+            transition: all 0.2s ease;
         }
 
-        /* MICRO-INTERACCIÓN: Efecto al tocar */
         .glass-card:active {
             transform: scale(0.98);
-            border-color: var(--gold-accent);
-            box-shadow: 0 0 25px var(--gold-glow);
         }
 
-        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        /* --- VISTA HOME (Estilos específicos) --- */
         .hero-section {
             padding: 30px;
             padding-top: 180px; 
             position: relative;
             margin-top: 50px;
             text-align: center;
-            overflow: visible;
+            margin-bottom: 30px;
         }
 
-        /* LOS CÍRCULOS DONDE VA TU LOGO */
         .tree-circle {
             position: absolute;
             border-radius: 50%;
-            background-color: #0a0a0a; /* Fondo de respaldo */
+            background-color: #0a0a0a;
             border: 2px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 0 30px rgba(0,0,0,0.6);
-            
-            /* --- AQUÍ ESTÁ TU LOGO --- */
-            /* Asegúrate de que logo.png esté en la misma carpeta que este HTML */
             background-image: url('logo.png'); 
-            
             background-size: cover;
             background-position: center;
         }
 
-        /* Círculo Principal Grande */
-        .circle-main {
-            width: 200px;
-            height: 200px;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-            /* Animación de flotación */
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Círculo Pequeño decorativo */
-        .circle-mini {
-            width: 70px;
-            height: 70px;
-            z-index: 5;
-            opacity: 0.9;
-        }
+        .circle-main { width: 200px; height: 200px; top: -60px; left: 50%; transform: translateX(-50%); z-index: 10; animation: float 6s ease-in-out infinite; }
+        .circle-mini { width: 70px; height: 70px; z-index: 5; opacity: 0.9; top: 20px; left: 20px; }
         
-        .pos-left { top: 20px; left: 20px; }
-
         @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); box-shadow: 0 0 30px rgba(212, 175, 55, 0.2); }
-            50% { transform: translateX(-50%) translateY(-10px); box-shadow: 0 0 50px rgba(212, 175, 55, 0.5); }
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
         }
 
-        .hero-title {
-            color: var(--gold-accent);
-            margin: 15px 0 10px 0;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .hero-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
+        .hero-title-text { color: var(--gold-accent); margin: 15px 0 10px 0; font-size: 1.4rem; font-weight: 800; letter-spacing: 1px;}
+        .hero-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-style: italic; }
 
-        /* --- BENTO GRID (Rejilla inferior) --- */
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .bento-item { padding: 20px; display: flex; flex-direction: column; justify-content: center; min-height: 120px; cursor: pointer; }
+        .tag { font-size: 0.65rem; color: var(--text-muted); font-weight: 800; opacity: 0.6; text-transform: uppercase; margin-bottom: 8px;}
+        .bento-title { color: var(--gold-accent); font-size: 1.2rem; margin: 0 0 8px 0; }
+        .bento-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
 
-        .bento-item {
-            padding: 20px;
+        /* --- VISTA LISTA DE CLASES --- */
+        .class-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .class-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            min-height: 110px;
-        }
-
-        .tag {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            font-weight: 800;
-            opacity: 0.5;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
-        
-        .bento-title {
+            font-size: 1.5rem;
+            margin-right: 15px;
             color: var(--gold-accent);
-            font-size: 1.1rem;
-            margin: 0 0 5px 0;
         }
+        .class-info h3 { margin: 0; color: white; font-size: 1.1rem; }
+        .class-info p { margin: 5px 0 0 0; color: var(--text-muted); font-size: 0.8rem; }
+        .arrow-right { margin-left: auto; color: var(--gold-accent); }
+
+        /* --- VISTA LECCIÓN (INFOGRAFÍA INTERACTIVA) --- */
+        .lesson-hero {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .lesson-number { color: var(--gold-accent); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; }
+        .lesson-title { font-size: 1.8rem; margin: 10px 0; background: linear-gradient(to right, #fff, #bbb); -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
         
-        .bento-text {
-            font-size: 0.8rem;
-            color: var(--text-muted);
+        /* Tarjetas de Información (El reemplazo de la imagen) */
+        .info-card {
+            padding: 20px;
+            border-left: 4px solid var(--gold-accent);
         }
+        .info-title { color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;}
+        .info-content { color: #ddd; line-height: 1.6; font-size: 0.95rem; }
+        
+        .highlight { color: var(--gold-accent); font-weight: bold; }
+        .verse-box { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px; margin-top: 10px; font-style: italic; border: 1px dashed var(--text-muted); }
 
     </style>
 </head>
 <body>
 
-    <div class="bento-wrapper">
-        <div class="header-label">container</div>
+    <div class="app-container">
 
-        <div class="glass-card hero-section">
-            <div class="tree-circle circle-mini pos-left"></div>
-            <div class="tree-circle circle-main"></div>
+        <div id="screen-home" class="screen active">
+            <div style="color: var(--gold-accent); font-weight: bold; margin-bottom: 10px; padding-left: 5px;">BIENVENIDO</div>
 
-            <h2 class="hero-title">EL ÁRBOL DE LA VIDA DIGITAL</h2>
-            <p class="hero-desc">Una síntesis de luz, conocimiento y conexión digital eterna.</p>
+            <div class="glass-card hero-section">
+                <div class="tree-circle circle-mini"></div>
+                <div class="tree-circle circle-main"></div>
+                <h2 class="hero-title-text">JESÚS EL ÁRBOL DE LA VIDA</h2>
+                <p class="hero-desc">Ap 2:7: "Al que venciere, le daré a comer del árbol de la vida, el cual está en medio del paraíso de Dios."</p>
+            </div>
+
+            <div class="grid-layout">
+                <div class="glass-card bento-item" onclick="navigate('screen-classes')">
+                    <span class="tag">ENSEÑANZA</span>
+                    <h3 class="bento-title">Clases</h3>
+                    <span class="bento-text">"Creced en la gracia y el conocimiento." (2 Pe 3:18)</span>
+                </div>
+
+                <div class="glass-card bento-item">
+                    <span class="tag">FUNDAMENTO</span>
+                    <h3 class="bento-title">Doctrina</h3>
+                    <span class="bento-text">"Retén la forma de las sanas palabras."</span>
+                </div>
+
+                <div class="glass-card bento-item">
+                    <span class="tag">RECREACIÓN</span>
+                    <h3 class="bento-title">Juegos</h3>
+                    <span class="bento-text">"Y las calles se llenarán de niños."</span>
+                </div>
+
+                <div class="glass-card bento-item">
+                    <span class="tag">CONEXIÓN</span>
+                    <h3 class="bento-title">Enlaces</h3>
+                    <span class="bento-text">"Solícitos en guardar la unidad."</span>
+                </div>
+            </div>
         </div>
 
-        <div class="grid-layout">
-            
-            <div class="glass-card bento-item">
-                <span class="tag">H2</span>
-                <h3 class="bento-title">Visión</h3>
-                <span class="bento-text">Innovación constante.</span>
+        <div id="screen-classes" class="screen">
+            <div class="header-nav">
+                <button class="btn-back" onclick="navigate('screen-home')">←</button>
+                <div class="header-title">Clases Disponibles</div>
             </div>
 
-            <div class="glass-card bento-item">
-                <span class="tag">H3</span>
-                <h3 class="bento-title">Creación</h3>
-                <span class="bento-text">De idea a al code.</span>
+            <div class="glass-card class-item" onclick="navigate('screen-lesson-1')">
+                <div class="class-icon">📜</div>
+                <div class="class-info">
+                    <h3>Números 12</h3>
+                    <p>La Murmuración de María y Aarón</p>
+                </div>
+                <div class="arrow-right">▶</div>
             </div>
 
-            <div class="glass-card bento-item">
-                <span class="tag">H3</span>
-                <h3 class="bento-title">Futuro</h3>
-                <span class="bento-text">Innovación estable.</span>
+            <div class="glass-card class-item" style="opacity: 0.5;">
+                <div class="class-icon">🗺️</div>
+                <div class="class-info">
+                    <h3>Geografía Bíblica</h3>
+                    <p>Próximamente...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="screen-lesson-1" class="screen">
+            <div class="header-nav">
+                <button class="btn-back" onclick="navigate('screen-classes')">←</button>
+                <div class="header-title">Lección Bíblica</div>
             </div>
 
-            <div class="glass-card bento-item">
-                <span class="tag">40</span>
-                <h3 class="bento-title">Futuro</h3>
-                <span class="bento-text">Escalabilidad infinita.</span>
+            <div class="glass-card lesson-hero">
+                <div class="lesson-number">CLASE Nº 01</div>
+                <h1 class="lesson-title">La Murmuración</h1>
+                <p style="color: var(--text-muted)">Un análisis profundo de Números 12</p>
+            </div>
+
+            <div class="glass-card info-card">
+                <h3 class="info-title">⚠️ El Problema</h3>
+                <div class="info-content">
+                    <p>María y Aarón hablaron contra Moisés. La excusa fue su esposa cusita, pero la raíz era la <span class="highlight">envidia</span> y la sed de autoridad.</p>
+                    <div class="verse-box">"¿Solamente por Moisés ha hablado Jehová?" (Núm 12:2)</div>
+                </div>
+            </div>
+
+            <div class="glass-card info-card" style="border-left-color: var(--gold-accent);">
+                <h3 class="info-title">🔥 La Respuesta de Dios</h3>
+                <div class="info-content">
+                    <p>Dios no guardó silencio. Los llamó a los tres al Tabernáculo. Dios defiende a sus siervos fieles.</p>
+                    <p>Moisés no se defendió a sí mismo, era el hombre más <span class="highlight">manso</span> de la tierra.</p>
+                </div>
+            </div>
+
+            <div class="glass-card info-card" style="border-left-color: var(--danger);">
+                <h3 class="info-title">⚡ La Consecuencia</h3>
+                <div class="info-content">
+                    <p>La ira de Jehová se encendió. María quedó leprosa, blanca como la nieve. La murmuración trae <span style="color: var(--danger)">enfermedad espiritual y física</span>.</p>
+                </div>
+            </div>
+
+            <div class="glass-card info-card" style="border-left-color: var(--success);">
+                <h3 class="info-title">❤️ La Restauración</h3>
+                <div class="info-content">
+                    <p>Moisés clamó a Dios: <i>"Te ruego, oh Dios, que la sanes ahora"</i>. Dios escuchó, pero hubo disciplina (7 días fuera del campamento).</p>
+                    <p><b>Lección:</b> El arrepentimiento y la intercesión traen sanidad.</p>
+                </div>
             </div>
 
         </div>
+
     </div>
+
+    <script>
+        function navigate(targetId) {
+            // 1. Ocultar todas las pantallas
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => {
+                screen.classList.remove('active');
+            });
+
+            // 2. Mostrar la pantalla deseada y hacer scroll arriba
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
 
 </body>
 </html>

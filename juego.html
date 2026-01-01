@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Desafío Bíblico</title>
+    <title>Desafío Árbol de la Vida</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -12,6 +12,7 @@
             --fondo: #050505;
             --correcto: #2ecc71;
             --error: #e74c3c;
+            --bloqueado: #333;
         }
 
         body {
@@ -24,268 +25,401 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            user-select: none;
         }
 
-        /* BARRA SUPERIOR */
-        .top-bar {
+        /* --- PANTALLA DE SELECCIÓN DE NIVEL --- */
+        #screen-levels {
+            display: flex;
+            flex-direction: column;
             padding: 20px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .level-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .level-card.locked {
+            opacity: 0.5;
+            border-color: #444;
+            background: rgba(0,0,0,0.5);
+            pointer-events: none; /* No se puede tocar */
+        }
+
+        .lock-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* --- PANTALLA DE JUEGO --- */
+        #screen-game {
+            display: none; /* Oculto al inicio */
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .top-bar {
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .btn-volver {
-            background: none;
-            border: 1px solid var(--oro);
-            color: var(--oro);
-            border-radius: 50%;
-            width: 40px; height: 40px;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .puntos-box {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid var(--oro);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            color: var(--oro);
+        .lives-container {
             display: flex;
-            align-items: center;
             gap: 5px;
+            font-size: 1.5rem;
         }
 
-        /* ZONA DE JUEGO */
+        /* Animación de los árboles de vida */
+        .life-tree {
+            transition: all 0.5s ease;
+            filter: grayscale(0);
+            transform: scale(1);
+        }
+
+        .life-tree.withered {
+            filter: sepia(1) hue-rotate(-50deg) saturate(3); /* Color Marrón/Seco */
+            transform: scale(0.9);
+        }
+
+        .life-tree.dead {
+            opacity: 0;
+            transform: scale(0);
+        }
+
         .game-area {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            perspective: 1000px;
-        }
-
-        .card {
-            background: rgba(25, 25, 25, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 25px;
-            padding: 30px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            text-align: center;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
         }
 
-        .badge-cat {
-            background: var(--oro);
-            color: black;
-            padding: 5px 12px;
-            border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: inline-block;
+        .card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid var(--oro);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .pregunta {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            line-height: 1.4;
-            font-weight: 700;
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-        .opciones {
-            display: grid;
-            gap: 12px;
-        }
-
+        .pregunta { font-size: 1.2rem; margin: 20px 0; font-weight: 700; line-height: 1.4; color: #fff; }
+        
+        .opciones { display: grid; gap: 10px; }
+        
         .btn-opcion {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px;
+            padding: 14px;
             border-radius: 12px;
             color: #ddd;
             font-size: 1rem;
             text-align: left;
             cursor: pointer;
             transition: 0.2s;
-            position: relative;
-            overflow: hidden;
         }
 
-        .btn-opcion:active { transform: scale(0.98); }
+        .btn-opcion:active { transform: scale(0.98); background: rgba(212, 175, 55, 0.1); }
+        .correcta { background: rgba(46, 204, 113, 0.3) !important; border-color: var(--correcto) !important; }
+        .incorrecta { background: rgba(231, 76, 60, 0.3) !important; border-color: var(--error) !important; animation: shake 0.4s; }
 
-        /* ESTADOS DE RESPUESTA */
-        .correcta {
-            background: rgba(46, 204, 113, 0.2) !important;
-            border-color: var(--correcto) !important;
-            color: var(--correcto) !important;
-            font-weight: bold;
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+        /* MODAL FINAL */
+        #modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: none; justify-content: center; align-items: center; z-index: 1000;
         }
-
-        .incorrecta {
-            background: rgba(231, 76, 60, 0.2) !important;
-            border-color: var(--error) !important;
-            animation: temblor 0.4s;
-        }
-
-        @keyframes temblor {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        /* POPUP EXPLICACIÓN */
-        .explanation-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: #1a1a1a;
-            border-top: 2px solid var(--oro);
-            padding: 25px;
-            border-radius: 25px 25px 0 0;
-            transform: translateY(110%);
-            transition: transform 0.3s ease;
-            z-index: 100;
-        }
-        .explanation-overlay.show { transform: translateY(0); }
-
-        .btn-siguiente {
-            width: 100%;
-            background: var(--oro);
-            color: black;
-            border: none;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 15px;
+        .modal-box {
+            background: #111; border: 2px solid var(--oro); padding: 30px; border-radius: 20px; text-align: center; width: 80%;
         }
     </style>
 </head>
 <body>
 
-    <audio id="snd-click" src="https://cdn.pixabay.com/audio/2022/03/24/audio_c8c8a73467.mp3"></audio> <audio id="snd-win" src="https://cdn.pixabay.com/audio/2021/08/04/audio_0625c1539c.mp3"></audio> <audio id="snd-lose" src="https://cdn.pixabay.com/audio/2021/08/09/audio_9788bf924a.mp3"></audio> <div class="top-bar">
-        <button class="btn-volver" onclick="window.location.href='index.html'">←</button>
-        <div class="puntos-box">
-            <span>✨</span> <span id="score">0</span>
+    <audio id="snd-click" src="https://cdn.pixabay.com/audio/2022/03/24/audio_c8c8a73467.mp3" preload="auto"></audio>
+    <audio id="snd-win" src="https://cdn.pixabay.com/audio/2021/08/04/audio_0625c1539c.mp3" preload="auto"></audio>
+    <audio id="snd-lose" src="https://cdn.pixabay.com/audio/2022/03/10/audio_5b66426422.mp3" preload="auto"></audio>
+
+    <div id="screen-levels">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <button onclick="window.location.href='index.html'" style="background:none; border:1px solid var(--oro); color:var(--oro); border-radius:50%; width:40px; height:40px;">←</button>
+            <h2 style="color:var(--oro); margin:0;">Niveles de Sabiduría</h2>
+            <div style="width:40px;"></div>
+        </div>
+        
+        <div class="level-grid" id="levels-container">
+            </div>
+    </div>
+
+    <div id="screen-game">
+        <div class="top-bar">
+            <button onclick="salirNivel()" style="background:none; border:none; color:#888; font-size:1.5rem;">×</button>
+            <div style="font-size:0.9rem; color:var(--oro);" id="level-indicator">Nivel 1</div>
+            <div class="lives-container" id="lives-box">
+                <span class="life-tree" id="life1">🌳</span>
+                <span class="life-tree" id="life2">🌳</span>
+                <span class="life-tree" id="life3">🌳</span>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="card">
+                <div style="font-size:0.8rem; color:#888; margin-bottom:10px;">Pregunta <span id="q-number">1</span>/5</div>
+                <div class="pregunta" id="question-text">Cargando...</div>
+                <div class="opciones" id="options-box"></div>
+            </div>
         </div>
     </div>
 
-    <div class="game-area">
-        <div class="card" id="game-card">
-            <span class="badge-cat" id="cat-text">Cargando...</span>
-            <div class="pregunta" id="q-text">Conectando con la sabiduría...</div>
-            <div class="opciones" id="opts-box"></div>
+    <div id="modal-overlay">
+        <div class="modal-box">
+            <h2 id="modal-title">¡Nivel Completado!</h2>
+            <p id="modal-msg">Has demostrado sabiduría.</p>
+            <button onclick="cerrarModal()" style="background:var(--oro); color:black; border:none; padding:10px 20px; border-radius:10px; font-weight:bold; margin-top:15px; width:100%;">Continuar</button>
         </div>
-    </div>
-
-    <div class="explanation-overlay" id="exp-panel">
-        <h3 id="exp-title" style="margin-top:0; color:var(--oro)">Respuesta</h3>
-        <p id="exp-text" style="color:#ccc; font-size:0.9rem; line-height:1.5"></p>
-        <button class="btn-siguiente" onclick="siguientePregunta()">Continuar</button>
     </div>
 
     <script>
-        let preguntas = [];
-        let indiceActual = 0;
-        let puntos = 0;
-        let bloqueo = false;
+        // CONFIGURACIÓN
+        const TOTAL_NIVELES = 7;
+        const PREGUNTAS_POR_NIVEL = 5;
+        const ACIERTOS_PARA_PASAR = 4; // Debes acertar 4 de 5
 
-        // Cargar sonidos
+        // ESTADO DEL JUEGO
+        let nivelActual = 1;
+        let preguntasNivel = [];
+        let indicePregunta = 0;
+        let aciertos = 0;
+        let vidas = 3;
+        let bloqueo = false;
+        let nivelMaximoDesbloqueado = parseInt(localStorage.getItem('renacer_nivel_max')) || 1;
+
+        // REFERENCIAS DE AUDIO
         const audioClick = document.getElementById('snd-click');
         const audioWin = document.getElementById('snd-win');
         const audioLose = document.getElementById('snd-lose');
-        
-        // Bajar volumen para que no aturda
-        audioWin.volume = 0.4;
-        audioLose.volume = 0.3;
+        audioWin.volume = 0.5;
 
-        async function iniciarJuego() {
-            try {
-                const res = await fetch('preguntas.json');
-                const data = await res.json();
-                preguntas = data.sort(() => Math.random() - 0.5); // Mezclar
-                cargarPregunta();
-            } catch (e) {
-                document.getElementById('q-text').innerText = "Error: No se encuentra preguntas.json";
+        // --- INICIO ---
+        window.onload = () => {
+            renderizarMenuNiveles();
+        };
+
+        // 1. RENDERIZAR MENÚ
+        function renderizarMenuNiveles() {
+            const container = document.getElementById('levels-container');
+            container.innerHTML = '';
+
+            const titulos = [
+                "Iniciado", "Discípulo", "Sembrador", "Guerrero", 
+                "Maestro", "Anciano", "Obrero Aprobado"
+            ];
+
+            for (let i = 1; i <= TOTAL_NIVELES; i++) {
+                const bloqueado = i > nivelMaximoDesbloqueado;
+                const div = document.createElement('div');
+                div.className = `level-card ${bloqueado ? 'locked' : ''}`;
+                div.onclick = () => iniciarNivel(i);
+                
+                div.innerHTML = `
+                    <div class="lock-icon">${bloqueado ? '🔒' : '🔓'}</div>
+                    <div style="font-weight:bold; color:var(--oro)">Nivel ${i}</div>
+                    <div style="font-size:0.8rem; color:#aaa">${titulos[i-1]}</div>
+                `;
+                container.appendChild(div);
             }
         }
 
-        function cargarPregunta() {
-            bloqueo = false;
-            document.getElementById('exp-panel').classList.remove('show');
+        // 2. INICIAR NIVEL
+        async function iniciarNivel(nivel) {
+            audioClick.play();
+            nivelActual = nivel;
+            document.getElementById('screen-levels').style.display = 'none';
+            document.getElementById('screen-game').style.display = 'flex';
+            document.getElementById('level-indicator').innerText = `Nivel ${nivel}`;
             
-            if (indiceActual >= preguntas.length) {
-                finalizarJuego();
+            // Resetear estado
+            aciertos = 0;
+            vidas = 3;
+            indicePregunta = 0;
+            restaurarArboles();
+
+            try {
+                // Cargar JSON
+                const res = await fetch('preguntas.json');
+                const data = await res.json();
+                
+                // FILTRAR POR NIVEL Y ALEATORIZAR
+                // Nota: Tu JSON actual no tiene niveles aún. Cuando lo actualicemos funcionará perfecto.
+                // Por ahora, simularé que agarra cualesquiera preguntas si no encuentra el tag "nivel".
+                const pool = data.filter(p => p.nivel === nivel || !p.nivel); 
+                
+                // Mezclar y tomar solo 5
+                preguntasNivel = pool.sort(() => Math.random() - 0.5).slice(0, PREGUNTAS_POR_NIVEL);
+                
+                if(preguntasNivel.length === 0) {
+                    alert("Aún no hay preguntas para este nivel en el JSON.");
+                    salirNivel();
+                    return;
+                }
+
+                mostrarPregunta();
+            } catch (e) {
+                alert("Error cargando preguntas.json");
+                salirNivel();
+            }
+        }
+
+        // 3. MOSTRAR PREGUNTA
+        function mostrarPregunta() {
+            bloqueo = false;
+            
+            if (indicePregunta >= preguntasNivel.length) {
+                finalizarNivel();
                 return;
             }
 
-            const p = preguntas[indiceActual];
-            document.getElementById('cat-text').innerText = p.categoria;
-            document.getElementById('q-text').innerText = p.pregunta;
+            const p = preguntasNivel[indicePregunta];
+            document.getElementById('q-number').innerText = indicePregunta + 1;
+            document.getElementById('question-text').innerText = p.pregunta;
             
-            const caja = document.getElementById('opts-box');
+            const caja = document.getElementById('options-box');
             caja.innerHTML = '';
 
             p.opciones.forEach((opt, index) => {
                 const btn = document.createElement('button');
                 btn.className = 'btn-opcion';
                 btn.innerText = opt;
-                btn.onclick = () => verificar(index, btn);
+                btn.onclick = () => verificarRespuesta(index, btn);
                 caja.appendChild(btn);
             });
         }
 
-        function verificar(i, btn) {
-            if(bloqueo) return;
+        // 4. VERIFICAR (Lógica de Vidas y Colores)
+        function verificarRespuesta(idx, btn) {
+            if (bloqueo) return;
             bloqueo = true;
-            
-            const p = preguntas[indiceActual];
-            const correcto = i === p.correcta;
-            const botones = document.querySelectorAll('.btn-opcion');
 
+            const p = preguntasNivel[indicePregunta];
+            const correcto = idx === p.correcta;
+            
             if (correcto) {
                 btn.classList.add('correcta');
-                puntos += p.puntos;
-                document.getElementById('score').innerText = puntos;
-                document.getElementById('exp-title').innerText = "¡Correcto!";
-                document.getElementById('exp-title').style.color = "var(--correcto)";
                 audioWin.currentTime = 0; audioWin.play();
+                aciertos++;
+                setTimeout(siguiente, 1000);
             } else {
                 btn.classList.add('incorrecta');
-                botones[p.correcta].classList.add('correcta'); // Mostrar cuál era
-                document.getElementById('exp-title').innerText = "Incorrecto";
-                document.getElementById('exp-title').style.color = "var(--error)";
+                // Mostrar la correcta
+                const botones = document.querySelectorAll('.btn-opcion');
+                botones[p.correcta].classList.add('correcta');
+                
                 audioLose.currentTime = 0; audioLose.play();
+                perderVida();
             }
-
-            document.getElementById('exp-text').innerText = p.explicacion;
-            setTimeout(() => {
-                document.getElementById('exp-panel').classList.add('show');
-            }, 600);
         }
 
-        function siguientePregunta() {
-            audioClick.play();
-            indiceActual++;
-            cargarPregunta();
+        function perderVida() {
+            // Animación del árbol: Verde -> Marrón -> Desaparece
+            const arbol = document.getElementById(`life${vidas}`);
+            if (arbol) {
+                arbol.classList.add('withered'); // Se seca
+                setTimeout(() => {
+                    arbol.classList.add('dead'); // Desaparece
+                }, 400);
+            }
+            
+            vidas--;
+
+            if (vidas <= 0) {
+                setTimeout(() => {
+                    mostrarModal("¡Árbol Seco!", "Has perdido todas tus vidas. Debes reiniciar el nivel.", false);
+                }, 1000);
+            } else {
+                setTimeout(siguiente, 1500); // Esperar un poco más si falló
+            }
         }
 
-        function finalizarJuego() {
-            document.getElementById('game-card').innerHTML = `
-                <h2 style="color:var(--oro)">¡Juego Terminado!</h2>
-                <p style="font-size:1.5rem">Puntos Finales: ${puntos}</p>
-                <button class="btn-siguiente" onclick="location.reload()">Jugar de Nuevo</button>
-                <button class="btn-siguiente" style="background:transparent; border:1px solid white; color:white; margin-top:10px" onclick="window.location.href='index.html'">Volver al Menú</button>
-            `;
+        function siguiente() {
+            indicePregunta++;
+            mostrarPregunta();
         }
 
-        window.onload = iniciarJuego;
+        function restaurarArboles() {
+            for(let i=1; i<=3; i++) {
+                const t = document.getElementById(`life${i}`);
+                t.className = 'life-tree'; // Quitar withered y dead
+            }
+        }
+
+        // 5. FINALIZAR NIVEL
+        function finalizarNivel() {
+            if (aciertos >= ACIERTOS_PARA_PASAR) {
+                // Desbloquear siguiente nivel si corresponde
+                if (nivelActual === nivelMaximoDesbloqueado && nivelActual < TOTAL_NIVELES) {
+                    nivelMaximoDesbloqueado++;
+                    localStorage.setItem('renacer_nivel_max', nivelMaximoDesbloqueado);
+                }
+                
+                if (nivelActual === TOTAL_NIVELES) {
+                    mostrarModal("¡OBRERO APROBADO!", "¡Felicidades! Has completado todo el entrenamiento.", true);
+                } else {
+                    mostrarModal("¡Nivel Superado!", `Has acertado ${aciertos} de ${PREGUNTAS_POR_NIVEL}. Siguiente nivel desbloqueado.`, true);
+                }
+            } else {
+                mostrarModal("Inténtalo de nuevo", `Solo acertaste ${aciertos}. Necesitas ${ACIERTOS_PARA_PASAR} para avanzar.`, false);
+            }
+        }
+
+        // UI MODAL
+        function mostrarModal(titulo, msg, esExito) {
+            document.getElementById('modal-overlay').style.display = 'flex';
+            document.getElementById('modal-title').innerText = titulo;
+            document.getElementById('modal-title').style.color = esExito ? 'var(--correcto)' : 'var(--error)';
+            document.getElementById('modal-msg').innerText = msg;
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+            salirNivel();
+        }
+
+        function salirNivel() {
+            document.getElementById('screen-game').style.display = 'none';
+            document.getElementById('screen-levels').style.display = 'flex';
+            renderizarMenuNiveles(); // Actualizar candados
+        }
+
     </script>
 </body>
 </html>

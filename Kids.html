@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Renacer Kids 🦁</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cielo: #4FC3F7;
+            --nube: #ffffff;
+            --pasto: #81C784;
+            --sol: #FFD54F;
+            --texto: #37474F;
+            --borde: #29B6F6;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--cielo);
+            /* Fondo de nubes sutil */
+            background-image: 
+                radial-gradient(circle at 20% 20%, white 10%, transparent 10%),
+                radial-gradient(circle at 80% 30%, white 15%, transparent 15%);
+            background-size: 500px 500px;
+            font-family: 'Nunito', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- UI GENERAL --- */
+        .top-bar {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .btn-back {
+            background: white;
+            border: 3px solid var(--borde);
+            color: var(--borde);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 rgba(41, 182, 246, 0.5);
+            transition: transform 0.1s;
+        }
+
+        .btn-back:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
+        .score-pill {
+            background: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-family: 'Fredoka One', cursive;
+            color: var(--texto);
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- PANTALLA DE MENÚ --- */
+        #menu-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .title-logo {
+            font-family: 'Fredoka One', cursive;
+            font-size: 3rem;
+            color: white;
+            text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .game-btn {
+            background: linear-gradient(to bottom, #FFEB3B, #FBC02D);
+            border: none;
+            padding: 20px 40px;
+            border-radius: 25px;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            color: #E65100;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #F57F17, 0 10px 10px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .game-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 0 0 #F57F17;
+        }
+
+        /* --- PANTALLA DE JUEGO (MEMORIA) --- */
+        #game-screen {
+            display: none;
+            flex: 1;
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+            gap: 10px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .card {
+            aspect-ratio: 1/1; /* Cuadradas */
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 5px 0 rgba(0,0,0,0.1);
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card.matched {
+            visibility: hidden; /* Desaparecen al acertar */
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%; height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            font-size: 2.5rem;
+            border: 3px solid white;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            background: linear-gradient(45deg, #FF7043, #FF5722);
+            color: white;
+            /* Signo de pregunta o logo */
+        }
+        
+        .card-front::after { content: '?'; font-family: 'Fredoka One'; }
+
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+            border-color: var(--borde);
+        }
+
+        /* --- MODAL DE VICTORIA --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none; justify-content: center; align-items: center;
+            z-index: 100;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            text-align: center;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+    </style>
+</head>
+<body>
+
+    <audio id="snd-flip" src="https://cdn.pixabay.com/audio/2022/03/24/audio_c8c8a73467.mp3"></audio>
+    <audio id="snd-match" src="https://cdn.pixabay.com/audio/2021/08/04/audio_0625c1539c.mp3"></audio>
+    <audio id="snd-win" src="https://cdn.pixabay.com/audio/2021/08/09/audio_02660235b0.mp3"></audio>
+
+    <div class="top-bar">
+        <button class="btn-back" onclick="goHome()">🏠</button>
+        <div class="score-pill">
+            <span>⭐</span> <span id="score">0</span>
+        </div>
+    </div>
+
+    <div id="menu-screen">
+        <div class="title-logo">Zona<br>Kids 🎨</div>
+        <button class="game-btn" onclick="startGame()">¡JUGAR!</button>
+        <p style="margin-top: 20px; color: #546E7A; font-weight: bold;">Encuentra las parejas bíblicas</p>
+    </div>
+
+    <div id="game-screen">
+        <div class="grid-container" id="grid">
+            </div>
+    </div>
+
+    <div class="modal-overlay" id="win-modal">
+        <div class="modal-content">
+            <h1 style="color: #FFB300; font-family: 'Fredoka One'; margin: 0;">¡MUY BIEN! 🎉</h1>
+            <p style="font-size: 1.2rem; color: #555;">¡Eres muy inteligente!</p>
+            <button class="game-btn" onclick="startGame()">Jugar Otra Vez</button>
+        </div>
+    </div>
+
+    <script>
+        // --- MOTOR DE JUEGO LIGERO ---
+        const audioFlip = document.getElementById('snd-flip');
+        const audioMatch = document.getElementById('snd-match');
+        const audioWin = document.getElementById('snd-win');
+
+        // DATOS: Emojis para que sea ligero (luego podemos usar imágenes PNG)
+        const itemsBiblicos = [
+            { icon: '🦁', id: 'daniel', name: 'León de Daniel' },
+            { icon: '🐳', id: 'jonas', name: 'Ballena de Jonás' },
+            { icon: '🕊️', id: 'noe', name: 'Paloma de Noé' },
+            { icon: '🥖', id: 'pan', name: 'Panes' },
+            { icon: '🐟', id: 'pez', name: 'Peces' },
+            { icon: '👑', id: 'rey', name: 'Corona de David' }
+        ];
+
+        let cards = []; // Array de cartas en juego
+        let flippedCards = []; // Cartas volteadas actualmente
+        let matchedPairs = 0;
+        let score = 0;
+        let lockBoard = false; // Evita clics rápidos
+
+        // Volver al menú de adultos
+        function goHome() {
+            window.location.href = 'index.html';
+        }
+
+        function startGame() {
+            document.getElementById('menu-screen').style.display = 'none';
+            document.getElementById('game-screen').style.display = 'flex';
+            document.getElementById('win-modal').style.display = 'none';
+            
+            resetGame();
+            createBoard();
+        }
+
+        function resetGame() {
+            matchedPairs = 0;
+            score = 0;
+            document.getElementById('score').textContent = score;
+            flippedCards = [];
+            
+            // Duplicar items para tener pares y barajar
+            cards = [...itemsBiblicos, ...itemsBiblicos];
+            cards.sort(() => Math.random() - 0.5);
+        }
+
+        function createBoard() {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = ''; // Limpiar tablero
+
+            cards.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.name = item.id; // Para identificar pareja
+                
+                // Estructura HTML de la carta
+                card.innerHTML = `
+                    <div class="card-face card-front"></div>
+                    <div class="card-face card-back">${item.icon}</div>
+                `;
+
+                card.addEventListener('click', () => flipCard(card));
+                grid.appendChild(card);
+            });
+        }
+
+        function flipCard(card) {
+            // Si está bloqueado, ya está volteada o es la misma carta
+            if (lockBoard) return;
+            if (card.classList.contains('flipped')) return;
+            if (flippedCards.length === 1 && flippedCards[0] === card) return;
+
+            // Voltear
+            card.classList.add('flipped');
+            audioFlip.currentTime = 0; audioFlip.play();
+            flippedCards.push(card);
+
+            // Verificar si hay 2 cartas
+            if (flippedCards.length === 2) {
+                checkForMatch();
+            }
+        }
+
+        function checkForMatch() {
+            lockBoard = true; // Bloquear tablero mientras verifica
+            const card1 = flippedCards[0];
+            const card2 = flippedCards[1];
+
+            const isMatch = card1.dataset.name === card2.dataset.name;
+
+            if (isMatch) {
+                disableCards();
+            } else {
+                unflipCards();
+            }
+        }
+
+        function disableCards() {
+            audioMatch.currentTime = 0; audioMatch.play();
+            score += 10;
+            document.getElementById('score').textContent = score;
+            matchedPairs++;
+
+            // Dejar las cartas visibles un momento y luego desaparecerlas (Efecto mágico)
+            setTimeout(() => {
+                flippedCards.forEach(card => card.classList.add('matched'));
+                resetBoard();
+                checkWin();
+            }, 800);
+        }
+
+        function unflipCards() {
+            setTimeout(() => {
+                flippedCards.forEach(card => card.classList.remove('flipped'));
+                resetBoard();
+            }, 1000); // Esperar 1 segundo si falló
+        }
+
+        function resetBoard() {
+            [lockBoard, flippedCards] = [false, []];
+        }
+
+        function checkWin() {
+            if (matchedPairs === itemsBiblicos.length) {
+                setTimeout(() => {
+                    audioWin.play();
+                    document.getElementById('win-modal').style.display = 'flex';
+                }, 500);
+            }
+        }
+
+    </script>
+</body>
+</html>

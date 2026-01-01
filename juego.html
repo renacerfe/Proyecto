@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Desafío Bíblico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --oro: #d4af37;
+            --fondo: #050505;
+            --correcto: #2ecc71;
+            --error: #e74c3c;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--fondo);
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            color: white;
+            font-family: 'Lato', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* BARRA SUPERIOR */
+        .top-bar {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-volver {
+            background: none;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+            border-radius: 50%;
+            width: 40px; height: 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .puntos-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--oro);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: var(--oro);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ZONA DE JUEGO */
+        .game-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: rgba(25, 25, 25, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .badge-cat {
+            background: var(--oro);
+            color: black;
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .pregunta {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .opciones {
+            display: grid;
+            gap: 12px;
+        }
+
+        .btn-opcion {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 12px;
+            color: #ddd;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-opcion:active { transform: scale(0.98); }
+
+        /* ESTADOS DE RESPUESTA */
+        .correcta {
+            background: rgba(46, 204, 113, 0.2) !important;
+            border-color: var(--correcto) !important;
+            color: var(--correcto) !important;
+            font-weight: bold;
+        }
+
+        .incorrecta {
+            background: rgba(231, 76, 60, 0.2) !important;
+            border-color: var(--error) !important;
+            animation: temblor 0.4s;
+        }
+
+        @keyframes temblor {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* POPUP EXPLICACIÓN */
+        .explanation-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: #1a1a1a;
+            border-top: 2px solid var(--oro);
+            padding: 25px;
+            border-radius: 25px 25px 0 0;
+            transform: translateY(110%);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+        .explanation-overlay.show { transform: translateY(0); }
+
+        .btn-siguiente {
+            width: 100%;
+            background: var(--oro);
+            color: black;
+            border: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="snd-click" src="https://cdn.pixabay.com/audio/2022/03/24/audio_c8c8a73467.mp3"></audio> <audio id="snd-win" src="https://cdn.pixabay.com/audio/2021/08/04/audio_0625c1539c.mp3"></audio> <audio id="snd-lose" src="https://cdn.pixabay.com/audio/2021/08/09/audio_9788bf924a.mp3"></audio> <div class="top-bar">
+        <button class="btn-volver" onclick="window.location.href='index.html'">←</button>
+        <div class="puntos-box">
+            <span>✨</span> <span id="score">0</span>
+        </div>
+    </div>
+
+    <div class="game-area">
+        <div class="card" id="game-card">
+            <span class="badge-cat" id="cat-text">Cargando...</span>
+            <div class="pregunta" id="q-text">Conectando con la sabiduría...</div>
+            <div class="opciones" id="opts-box"></div>
+        </div>
+    </div>
+
+    <div class="explanation-overlay" id="exp-panel">
+        <h3 id="exp-title" style="margin-top:0; color:var(--oro)">Respuesta</h3>
+        <p id="exp-text" style="color:#ccc; font-size:0.9rem; line-height:1.5"></p>
+        <button class="btn-siguiente" onclick="siguientePregunta()">Continuar</button>
+    </div>
+
+    <script>
+        let preguntas = [];
+        let indiceActual = 0;
+        let puntos = 0;
+        let bloqueo = false;
+
+        // Cargar sonidos
+        const audioClick = document.getElementById('snd-click');
+        const audioWin = document.getElementById('snd-win');
+        const audioLose = document.getElementById('snd-lose');
+        
+        // Bajar volumen para que no aturda
+        audioWin.volume = 0.4;
+        audioLose.volume = 0.3;
+
+        async function iniciarJuego() {
+            try {
+                const res = await fetch('preguntas.json');
+                const data = await res.json();
+                preguntas = data.sort(() => Math.random() - 0.5); // Mezclar
+                cargarPregunta();
+            } catch (e) {
+                document.getElementById('q-text').innerText = "Error: No se encuentra preguntas.json";
+            }
+        }
+
+        function cargarPregunta() {
+            bloqueo = false;
+            document.getElementById('exp-panel').classList.remove('show');
+            
+            if (indiceActual >= preguntas.length) {
+                finalizarJuego();
+                return;
+            }
+
+            const p = preguntas[indiceActual];
+            document.getElementById('cat-text').innerText = p.categoria;
+            document.getElementById('q-text').innerText = p.pregunta;
+            
+            const caja = document.getElementById('opts-box');
+            caja.innerHTML = '';
+
+            p.opciones.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-opcion';
+                btn.innerText = opt;
+                btn.onclick = () => verificar(index, btn);
+                caja.appendChild(btn);
+            });
+        }
+
+        function verificar(i, btn) {
+            if(bloqueo) return;
+            bloqueo = true;
+            
+            const p = preguntas[indiceActual];
+            const correcto = i === p.correcta;
+            const botones = document.querySelectorAll('.btn-opcion');
+
+            if (correcto) {
+                btn.classList.add('correcta');
+                puntos += p.puntos;
+                document.getElementById('score').innerText = puntos;
+                document.getElementById('exp-title').innerText = "¡Correcto!";
+                document.getElementById('exp-title').style.color = "var(--correcto)";
+                audioWin.currentTime = 0; audioWin.play();
+            } else {
+                btn.classList.add('incorrecta');
+                botones[p.correcta].classList.add('correcta'); // Mostrar cuál era
+                document.getElementById('exp-title').innerText = "Incorrecto";
+                document.getElementById('exp-title').style.color = "var(--error)";
+                audioLose.currentTime = 0; audioLose.play();
+            }
+
+            document.getElementById('exp-text').innerText = p.explicacion;
+            setTimeout(() => {
+                document.getElementById('exp-panel').classList.add('show');
+            }, 600);
+        }
+
+        function siguientePregunta() {
+            audioClick.play();
+            indiceActual++;
+            cargarPregunta();
+        }
+
+        function finalizarJuego() {
+            document.getElementById('game-card').innerHTML = `
+                <h2 style="color:var(--oro)">¡Juego Terminado!</h2>
+                <p style="font-size:1.5rem">Puntos Finales: ${puntos}</p>
+                <button class="btn-siguiente" onclick="location.reload()">Jugar de Nuevo</button>
+                <button class="btn-siguiente" style="background:transparent; border:1px solid white; color:white; margin-top:10px" onclick="window.location.href='index.html'">Volver al Menú</button>
+            `;
+        }
+
+        window.onload = iniciarJuego;
+    </script>
+</body>
+</html>

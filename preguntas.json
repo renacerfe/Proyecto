@@ -1,0 +1,1002 @@
+[
+  {
+    "id": 1,
+    "nivel": 1,
+    "pregunta": "¿Cuántos días y noches llovió durante el gran diluvio en tiempos de Noé?",
+    "opciones": ["7 días", "40 días", "12 días", "100 días"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "Génesis 7:12 dice que hubo lluvia sobre la tierra cuarenta días y cuarenta noches."
+  },
+  {
+    "id": 2,
+    "nivel": 1,
+    "pregunta": "¿Cuál es el primer libro de la Biblia?",
+    "opciones": ["Éxodo", "Mateo", "Apocalipsis", "Génesis"],
+    "correcta": 3,
+    "categoria": "Pentateuco",
+    "puntos": 10,
+    "explicacion": "Génesis significa 'principio' y relata la creación de todas las cosas."
+  },
+  {
+    "id": 3,
+    "nivel": 1,
+    "pregunta": "¿Quién fue el gigante que David venció con una honda y una piedra?",
+    "opciones": ["Saúl", "Goliat", "Salomón", "Sansón"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "David, siendo un joven pastor, venció al filisteo Goliat confiando en el nombre de Jehová (1 Samuel 17)."
+  },
+  {
+    "id": 4,
+    "nivel": 1,
+    "pregunta": "¿Qué mar se abrió para que el pueblo de Israel cruzara en seco?",
+    "opciones": ["Mar Muerto", "Mar Rojo", "Mar de Galilea", "Mar Mediterráneo"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "Dios usó a Moisés para dividir el Mar Rojo y salvar a Su pueblo de los egipcios (Éxodo 14)."
+  },
+  {
+    "id": 5,
+    "nivel": 1,
+    "pregunta": "¿Quién fue el hijo de Dios que vino al mundo a morir por nuestros pecados?",
+    "opciones": ["Pedro", "Juan el Bautista", "Jesucristo", "Pablo"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 10,
+    "explicacion": "Juan 3:16 afirma que Dios dio a su Hijo unigénito para que todo el que crea en Él tenga vida eterna."
+  },
+  {
+    "id": 6,
+    "nivel": 1,
+    "pregunta": "¿Quién recibió los Diez Mandamientos en el Monte Sinaí?",
+    "opciones": ["Abraham", "Moisés", "David", "Aarón"],
+    "correcta": 1,
+    "categoria": "Ley",
+    "puntos": 10,
+    "explicacion": "Moisés subió al monte donde Dios le entregó las tablas de la ley (Éxodo 20)."
+  },
+  {
+    "id": 7,
+    "nivel": 1,
+    "pregunta": "¿Qué animal tentó a Eva en el jardín del Edén?",
+    "opciones": ["Un león", "Una serpiente", "Un ave", "Un lobo"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "La serpiente era astuta y engañó a Eva para que comiera del fruto prohibido (Génesis 3)."
+  },
+  {
+    "id": 8,
+    "nivel": 1,
+    "pregunta": "¿Cuántos discípulos principales eligió Jesús?",
+    "opciones": ["7", "10", "12", "40"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 10,
+    "explicacion": "Jesús llamó a doce hombres para ser sus apóstoles y testigos (Mateo 10)."
+  },
+  {
+    "id": 9,
+    "nivel": 2,
+    "pregunta": "¿Quién fue el hombre más sabio de la tierra después de Dios?",
+    "opciones": ["David", "Salomón", "Job", "Daniel"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 15,
+    "explicacion": "Salomón pidió sabiduría a Dios para gobernar a su pueblo y le fue concedida (1 Reyes 3)."
+  },
+  {
+    "id": 10,
+    "nivel": 2,
+    "pregunta": "¿Cómo se llamaba el hombre que fue arrojado al foso de los leones por orar a Dios?",
+    "opciones": ["Esdras", "Nehemías", "Daniel", "José"],
+    "correcta": 2,
+    "categoria": "Profetas",
+    "puntos": 15,
+    "explicacion": "Daniel prefirió obedecer a Dios antes que al decreto del rey y Dios cerró la boca de los leones (Daniel 6)."
+  },
+  {
+    "id": 11,
+    "nivel": 2,
+    "pregunta": "¿Cuál era la profesión de los primeros discípulos llamados por Jesús, Pedro y Andrés?",
+    "opciones": ["Carpinteros", "Médicos", "Pescadores", "Pastores"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 15,
+    "explicacion": "Jesús los llamó a orillas del Mar de Galilea para hacerlos 'pescadores de hombres' (Mateo 4:19)."
+  },
+  {
+    "id": 12,
+    "nivel": 2,
+    "pregunta": "¿Quién fue vendido por sus hermanos como esclavo y luego fue gobernador de Egipto?",
+    "opciones": ["Benjamín", "José", "Isaac", "Jacob"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 15,
+    "explicacion": "A pesar de la traición de sus hermanos, Dios usó a José para salvar a su familia del hambre (Génesis 37-45)."
+  },
+  {
+    "id": 13,
+    "nivel": 2,
+    "pregunta": "¿Con qué mató Sansón a mil filisteos?",
+    "opciones": ["Con una espada", "Con una quijada de asno", "Con una lanza", "Con un arco"],
+    "correcta": 1,
+    "categoria": "Jueces",
+    "puntos": 15,
+    "explicacion": "Bajo el poder del Espíritu, Sansón usó una quijada de asno fresca para vencer a sus enemigos (Jueces 15:15)."
+  },
+  {
+    "id": 14,
+    "nivel": 2,
+    "pregunta": "¿Cómo se llamaban los padres de Jesús en la tierra?",
+    "opciones": ["Abraham y Sara", "Zacarías e Elisabet", "José y María", "Isaac y Rebeca"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 15,
+    "explicacion": "María concibió por el Espíritu Santo y José fue su padre adoptivo legal (Mateo 1)."
+  },
+  {
+    "id": 15,
+    "nivel": 2,
+    "pregunta": "¿Cuál fue el primer milagro público de Jesús?",
+    "opciones": ["Sanar a un leproso", "Caminar sobre el agua", "Convertir el agua en vino", "Multiplicar los panes"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 15,
+    "explicacion": "Sucedió en las bodas de Caná de Galilea, a petición de su madre María (Juan 2)."
+  },
+  {
+    "id": 16,
+    "nivel": 1,
+    "pregunta": "¿Qué construyó Noé para salvarse del diluvio?",
+    "opciones": ["Un templo", "Un arca", "Un castillo", "Una cueva"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "Dios le dio instrucciones precisas a Noé para construir el arca de madera de gofer (Génesis 6)."
+  },
+  {
+    "id": 17,
+    "nivel": 1,
+    "pregunta": "¿Quién fue el primer hombre creado por Dios?",
+    "opciones": ["Abel", "Set", "Adán", "Enoc"],
+    "correcta": 2,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "Dios formó al hombre del polvo de la tierra y sopló aliento de vida (Génesis 2)."
+  },
+  {
+    "id": 18,
+    "nivel": 1,
+    "pregunta": "¿Cómo se llama el último libro de la Biblia?",
+    "opciones": ["Apocalipsis", "Génesis", "Judas", "Malaquías"],
+    "correcta": 0,
+    "categoria": "Profecía",
+    "puntos": 10,
+    "explicacion": "Apocalipsis significa 'revelación' y habla de los eventos finales y el regreso de Cristo."
+  },
+  {
+    "id": 19,
+    "nivel": 2,
+    "pregunta": "¿Cuántas veces perdonó Dios a la ciudad de Nínive después de la predicación de Jonás?",
+    "opciones": ["Ninguna", "Una vez", "Siete veces", "Siempre"],
+    "correcta": 1,
+    "categoria": "Profetas",
+    "puntos": 15,
+    "explicacion": "Al ver su arrepentimiento, Dios tuvo misericordia y no destruyó la ciudad (Jonás 3)."
+  },
+  {
+    "id": 20,
+    "nivel": 2,
+    "pregunta": "¿Quién fue el primo de Jesús que predicaba en el desierto y bautizaba?",
+    "opciones": ["Santiago", "Andrés", "Juan el Bautista", "Felipe"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 15,
+    "explicacion": "Él preparó el camino para el Señor predicando el arrepentimiento (Marcos 1)."
+  },
+  {
+    "id": 21,
+    "nivel": 1,
+    "pregunta": "¿En qué ciudad nació Jesús?",
+    "opciones": ["Nazaret", "Jerusalén", "Belén", "Egipto"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 10,
+    "explicacion": "Tal como profetizó Miqueas, el Salvador nació en Belén de Judea (Mateo 2)."
+  },
+  {
+    "id": 22,
+    "nivel": 1,
+    "pregunta": "¿Qué le dio Dios a Adán para que no estuviera solo?",
+    "opciones": ["Un perro", "Una compañera (Eva)", "Un ángel", "Un jardín"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 10,
+    "explicacion": "Dios dijo: 'No es bueno que el hombre esté solo' y creó a la mujer de su costilla (Génesis 2)."
+  },
+  {
+    "id": 23,
+    "nivel": 2,
+    "pregunta": "¿Cómo se llama el monte donde Jesús fue crucificado?",
+    "opciones": ["Monte de los Olivos", "Gólgota (Lugar de la Calavera)", "Monte Sinaí", "Monte Carmelo"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 15,
+    "explicacion": "Fue llevado fuera de la ciudad al lugar llamado Calvario o Gólgota (Juan 19)."
+  },
+  {
+    "id": 24,
+    "nivel": 2,
+    "pregunta": "¿Quién caminó sobre el agua hacia Jesús pero tuvo miedo y comenzó a hundirse?",
+    "opciones": ["Juan", "Tomás", "Pedro", "Jacobo"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 15,
+    "explicacion": "Pedro tuvo fe por un momento, pero al ver el fuerte viento, temió y clamó: '¡Señor, sálvame!' (Mateo 14)."
+  },
+  {
+    "id": 25,
+    "nivel": 2,
+    "pregunta": "¿Qué utilizó el joven pastor David para vencer al león y al oso que atacaban su rebaño?",
+    "opciones": ["Sus manos y la ayuda de Dios", "Una lanza de hierro", "Una red", "Fuego"],
+    "correcta": 0,
+    "categoria": "Historia",
+    "puntos": 15,
+    "explicacion": "David testificó que Jehová lo libró de las garras de las fieras antes de enfrentar a Goliat (1 Samuel 17:37)."
+  },
+  {
+    "id": 26,
+    "nivel": 3,
+    "pregunta": "¿Qué nombre le puso Jacob al lugar donde soñó con una escalera que llegaba al cielo?",
+    "opciones": ["Betel", "Peniel", "Sinaí", "Jerusalén"],
+    "correcta": 0,
+    "categoria": "Historia",
+    "puntos": 20,
+    "explicacion": "Betel significa 'Casa de Dios'. Jacob dijo: 'Ciertamente Jehová está en este lugar, y yo no lo sabía' (Génesis 28)."
+  },
+  {
+    "id": 27,
+    "nivel": 3,
+    "pregunta": "¿Cuál era la enfermedad de Naamán, el general sirio que se lavó siete veces en el Jordán?",
+    "opciones": ["Ceguera", "Parálisis", "Lepra", "Mudez"],
+    "correcta": 2,
+    "categoria": "Historia",
+    "puntos": 20,
+    "explicacion": "Siguiendo el consejo del profeta Eliseo, Naamán fue sanado de su lepra tras obedecer (2 Reyes 5)."
+  },
+  {
+    "id": 28,
+    "nivel": 3,
+    "pregunta": "¿Qué parábola contó Jesús para enseñar quién es nuestro prójimo?",
+    "opciones": ["El Sembrador", "El Buen Samaritano", "La Oveja Perdida", "Los Talentos"],
+    "correcta": 1,
+    "categoria": "Parábolas",
+    "puntos": 20,
+    "explicacion": "Jesús usó la figura de un samaritano misericordioso para dar una lección de amor al prójimo (Lucas 10)."
+  },
+  {
+    "id": 29,
+    "nivel": 3,
+    "pregunta": "¿Quién fue el profeta que fue llevado al cielo en un torbellino y un carro de fuego?",
+    "opciones": ["Enoc", "Eliseo", "Elías", "Moisés"],
+    "correcta": 2,
+    "categoria": "Profetas",
+    "puntos": 20,
+    "explicacion": "Elías fue arrebatado ante los ojos de Eliseo, quien heredó su manto (2 Reyes 2)."
+  },
+  {
+    "id": 30,
+    "nivel": 3,
+    "pregunta": "¿Cuántas canastas sobraron después de que Jesús alimentó a los cinco mil con cinco panes y dos peces?",
+    "opciones": ["3", "7", "12", "40"],
+    "correcta": 2,
+    "categoria": "Milagros",
+    "puntos": 20,
+    "explicacion": "Después de que todos comieron y se saciaron, recogieron doce cestas llenas de pedazos (Mateo 14)."
+  },
+  {
+    "id": 31,
+    "nivel": 3,
+    "pregunta": "¿A quién resucitó Jesús en Betania después de que llevaba cuatro días muerto?",
+    "opciones": ["Lázaro", "Jairo", "Tabita", "Eutico"],
+    "correcta": 0,
+    "categoria": "Milagros",
+    "puntos": 20,
+    "explicacion": "Jesús gritó: '¡Lázaro, ven fuera!' y el que había muerto salió atado de pies y manos (Juan 11)."
+  },
+  {
+    "id": 32,
+    "nivel": 3,
+    "pregunta": "¿Cuál es la 'raíz de todos los males' según 1 Timoteo 6:10?",
+    "opciones": ["La mentira", "El orgullo", "El amor al dinero", "La ira"],
+    "correcta": 2,
+    "categoria": "Doctrina",
+    "puntos": 25,
+    "explicacion": "El texto aclara que el deseo codicioso de dinero extravía a muchos de la fe."
+  },
+  {
+    "id": 33,
+    "nivel": 3,
+    "pregunta": "¿En qué idioma se escribió originalmente la mayor parte del Nuevo Testamento?",
+    "opciones": ["Hebreo", "Latín", "Griego", "Arameo"],
+    "correcta": 2,
+    "categoria": "General",
+    "puntos": 25,
+    "explicacion": "El griego koiné era el idioma común en el Mediterráneo durante el primer siglo."
+  },
+  {
+    "id": 34,
+    "nivel": 4,
+    "pregunta": "¿Cómo se llamaba la mujer que escondió a los espías de Israel en Jericó?",
+    "opciones": ["Débora", "Rahab", "Dalila", "Rut"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 30,
+    "explicacion": "Por su fe, Rahab fue salvada cuando las murallas de Jericó cayeron (Josué 2)."
+  },
+  {
+    "id": 35,
+    "nivel": 4,
+    "pregunta": "¿Qué apóstol fue liberado de la cárcel por un ángel mientras la iglesia oraba por él?",
+    "opciones": ["Pablo", "Santiago", "Pedro", "Juan"],
+    "correcta": 2,
+    "categoria": "Hechos",
+    "puntos": 30,
+    "explicacion": "Herodes lo tenía preso, pero las cadenas se cayeron y las puertas se abrieron milagrosamente (Hechos 12)."
+  },
+  {
+    "id": 36,
+    "nivel": 4,
+    "pregunta": "¿En qué ciudad los discípulos fueron llamados 'cristianos' por primera vez?",
+    "opciones": ["Jerusalén", "Antioquía", "Roma", "Éfeso"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 30,
+    "explicacion": "Hechos 11:26 registra que fue en Antioquía donde surgió este nombre."
+  },
+  {
+    "id": 37,
+    "nivel": 4,
+    "pregunta": "¿Quién escribió el libro de los Hechos de los Apóstoles?",
+    "opciones": ["Pedro", "Mateo", "Lucas", "Marcos"],
+    "correcta": 2,
+    "categoria": "Hechos",
+    "puntos": 30,
+    "explicacion": "Lucas, el médico amado, escribió tanto su Evangelio como los Hechos para Teófilo."
+  },
+  {
+    "id": 38,
+    "nivel": 4,
+    "pregunta": "¿Cuál fue el monte donde Dios proveyó un carnero para el sacrificio en lugar de Isaac?",
+    "opciones": ["Sinaí", "Moriah", "Horeb", "Hermón"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 35,
+    "explicacion": "Abraham llamó a aquel lugar 'Jehová Jireh', que significa 'El Señor proveerá' (Génesis 22)."
+  },
+  {
+    "id": 39,
+    "nivel": 4,
+    "pregunta": "¿Qué fruto del Espíritu se menciona primero en Gálatas 5:22?",
+    "opciones": ["Paz", "Gozo", "Amor", "Fe"],
+    "correcta": 2,
+    "categoria": "Doctrina",
+    "puntos": 30,
+    "explicacion": "La lista comienza con el amor, que es el cumplimiento de toda la ley."
+  },
+  {
+    "id": 40,
+    "nivel": 4,
+    "pregunta": "¿A qué rey servía el profeta Daniel en Babilonia cuando interpretó el sueño de la estatua?",
+    "opciones": ["Ciro", "Darío", "Nabucodonosor", "Artajerjes"],
+    "correcta": 2,
+    "categoria": "Profetas",
+    "puntos": 35,
+    "explicacion": "Dios reveló a Daniel el sueño del rey Nabucodonosor sobre los imperios del mundo (Daniel 2)."
+  },
+  {
+    "id": 41,
+    "nivel": 3,
+    "pregunta": "¿Quién fue el hombre que subió a un árbol sicómoro para ver pasar a Jesús?",
+    "opciones": ["Bartimeo", "Zaqueo", "Nicodemo", "Lázaro"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 20,
+    "explicacion": "Zaqueo era un recaudador de impuestos de baja estatura que buscaba conocer a Jesús (Lucas 19)."
+  },
+  {
+    "id": 42,
+    "nivel": 3,
+    "pregunta": "¿Cuántos panes utilizó Jesús para alimentar a los cuatro mil?",
+    "opciones": ["5", "7", "12", "2"],
+    "correcta": 1,
+    "categoria": "Milagros",
+    "puntos": 20,
+    "explicacion": "En esta ocasión separada de la de los cinco mil, Jesús usó siete panes y unos pocos pececillos (Mateo 15)."
+  },
+  {
+    "id": 43,
+    "nivel": 4,
+    "pregunta": "¿Cómo murió el apóstol Santiago, el hermano de Juan?",
+    "opciones": ["Crucificado", "A espada por orden de Herodes", "Lapidado", "De vejez"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 35,
+    "explicacion": "Fue el primer apóstol en morir como mártir, ejecutado por Herodes Agripa (Hechos 12)."
+  },
+  {
+    "id": 44,
+    "nivel": 4,
+    "pregunta": "¿Qué joven apóstol recibió las cartas de Pablo donde se le decía: 'Ninguno tenga en poco tu juventud'?",
+    "opciones": ["Tito", "Timoteo", "Silas", "Bernabé"],
+    "correcta": 1,
+    "categoria": "Cartas",
+    "puntos": 30,
+    "explicacion": "Pablo consideraba a Timoteo como su 'hijo en la fe' y lo animaba a ser ejemplo (1 Timoteo 4:12)."
+  },
+  {
+    "id": 45,
+    "nivel": 3,
+    "pregunta": "¿Cuál es el versículo más corto de la Biblia?",
+    "opciones": ["Dios es amor", "Jesús lloró", "No matarás", "Cristo viene"],
+    "correcta": 1,
+    "categoria": "General",
+    "puntos": 20,
+    "explicacion": "Juan 11:35 contiene solo estas dos palabras tras la muerte de Lázaro."
+  },
+  {
+    "id": 46,
+    "nivel": 4,
+    "pregunta": "¿Quién fue el compañero de Pablo que cantaba himnos con él en la cárcel de Filipos a medianoche?",
+    "opciones": ["Lucas", "Marcos", "Silas", "Apolos"],
+    "correcta": 2,
+    "categoria": "Hechos",
+    "puntos": 30,
+    "explicacion": "A pesar de estar encadenados, adoraron a Dios y un terremoto abrió las puertas (Hechos 16)."
+  },
+  {
+    "id": 47,
+    "nivel": 4,
+    "pregunta": "¿Cuál era la ocupación de Lidia, la primera conversa en Europa?",
+    "opciones": ["Costurera", "Vendedora de púrpura", "Pescadora", "Criada"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 35,
+    "explicacion": "Era una mujer de negocios en la ciudad de Filipos (Hechos 16:14)."
+  },
+  {
+    "id": 48,
+    "nivel": 3,
+    "pregunta": "¿Qué mujer bíblica dijo: 'Tu pueblo será mi pueblo, y tu Dios mi Dios'?",
+    "opciones": ["Noemí", "Ester", "Rut", "Ana"],
+    "correcta": 2,
+    "categoria": "Historia",
+    "puntos": 20,
+    "explicacion": "Rut, la moabita, decidió permanecer fiel a su suegra Noemí y al Dios de Israel (Rut 1)."
+  },
+  {
+    "id": 49,
+    "nivel": 4,
+    "pregunta": "¿Quién fue el primer mártir cristiano, que murió lapidado mientras veía el cielo abierto?",
+    "opciones": ["Felipe", "Esteban", "Santiago", "Andrés"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 30,
+    "explicacion": "Esteban fue lleno del Espíritu Santo y perdonó a sus verdugos mientras moría (Hechos 7)."
+  },
+  {
+    "id": 50,
+    "nivel": 4,
+    "pregunta": "¿Cómo se llamaba el lugar donde Pablo predicó a los filósofos en Atenas?",
+    "opciones": ["El Partenón", "El Areópago", "El Coliseo", "La Vía Apia"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 35,
+    "explicacion": "En el Areópago, Pablo habló sobre el 'Dios no conocido' (Hechos 17)."
+  },
+  {
+    "id": 51,
+    "nivel": 5,
+    "pregunta": "¿Qué animal representaba al Reino de Babilonia en la visión de Daniel 7?",
+    "opciones": ["Un oso", "Un leopardo", "Un león con alas de águila", "Un dragón"],
+    "correcta": 2,
+    "categoria": "Profecía",
+    "puntos": 40,
+    "explicacion": "Daniel vio cuatro bestias que representaban imperios, siendo el león el primero (Babilonia)."
+  },
+  {
+    "id": 52,
+    "nivel": 5,
+    "pregunta": "¿Quién fue el rey de Judá que vio retroceder la sombra del reloj diez grados como señal de sanidad?",
+    "opciones": ["Josías", "Ezequías", "Acaz", "Manasés"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 40,
+    "explicacion": "Dios añadió quince años de vida a Ezequías y le dio esta señal milagrosa (2 Reyes 20)."
+  },
+  {
+    "id": 53,
+    "nivel": 5,
+    "pregunta": "¿Cuál es el 'principio de la sabiduría' según Proverbios 1:7?",
+    "opciones": ["Estudiar mucho", "El temor de Jehová", "Escuchar a los ancianos", "Hacer buenas obras"],
+    "correcta": 1,
+    "categoria": "Sabiduría",
+    "puntos": 40,
+    "explicacion": "El respeto reverente a Dios es la base para adquirir verdadero conocimiento espiritual."
+  },
+  {
+    "id": 54,
+    "nivel": 5,
+    "pregunta": "¿Cómo se llamaba la ciudad de refugio donde el apóstol Juan fue exiliado y escribió el Apocalipsis?",
+    "opciones": ["Chipre", "Creta", "Patmos", "Malta"],
+    "correcta": 2,
+    "categoria": "Hechos",
+    "puntos": 45,
+    "explicacion": "Juan estaba en la isla de Patmos por causa de la palabra de Dios y el testimonio de Jesucristo (Apocalipsis 1:9)."
+  },
+  {
+    "id": 55,
+    "nivel": 5,
+    "pregunta": "¿Qué pariente era Bernabé del joven Marcos, el autor del Evangelio?",
+    "opciones": ["Padre", "Hermano", "Primo", "Tío"],
+    "correcta": 2,
+    "categoria": "Cartas",
+    "puntos": 40,
+    "explicacion": "Colosenses 4:10 menciona que Marcos era primo de Bernabé."
+  },
+  {
+    "id": 56,
+    "nivel": 5,
+    "pregunta": "¿Quién fue el sucesor del profeta Elías?",
+    "opciones": ["Isaías", "Eliseo", "Samuel", "Natán"],
+    "correcta": 1,
+    "categoria": "Profetas",
+    "puntos": 40,
+    "explicacion": "Eliseo pidió una doble porción del espíritu de Elías antes de que este fuera arrebatado (2 Reyes 2)."
+  },
+  {
+    "id": 57,
+    "nivel": 5,
+    "pregunta": "¿Cuántos años tenía Abraham cuando nació su hijo Isaac?",
+    "opciones": ["75 años", "80 años", "90 años", "100 años"],
+    "correcta": 3,
+    "categoria": "Historia",
+    "puntos": 45,
+    "explicacion": "Dios cumplió Su promesa a Abraham y Sara en su vejez (Génesis 21:5)."
+  },
+  {
+    "id": 58,
+    "nivel": 6,
+    "pregunta": "¿Cuál es el nombre del ángel que anunció a María que daría a luz a Jesús?",
+    "opciones": ["Miguel", "Rafael", "Gabriel", "Uriel"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 50,
+    "explicacion": "El ángel Gabriel fue enviado por Dios a Nazaret para dar las buenas nuevas (Lucas 1:26)."
+  },
+  {
+    "id": 59,
+    "nivel": 6,
+    "pregunta": "¿Qué tribu de Israel no recibió heredad de tierra porque su heredad era Jehová?",
+    "opciones": ["Judá", "Benjamín", "Leví", "Dan"],
+    "correcta": 2,
+    "categoria": "Pentateuco",
+    "puntos": 55,
+    "explicacion": "Los levitas estaban dedicados al servicio del tabernáculo y Dios era su porción (Josué 13:33)."
+  },
+  {
+    "id": 60,
+    "nivel": 6,
+    "pregunta": "¿Quién fue el sumo sacerdote que interrogó a Jesús antes de enviarlo a Pilato?",
+    "opciones": ["Anás", "Caifás", "Gamaliel", "Nicodemo"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 50,
+    "explicacion": "Caifás era el sumo sacerdote aquel año y profetizó que Jesús moriría por la nación (Juan 11:49)."
+  },
+  {
+    "id": 61,
+    "nivel": 6,
+    "pregunta": "¿Cuántas veces se menciona la palabra 'Dios' en el libro de Ester?",
+    "opciones": ["Muchas veces", "10 veces", "Cero veces", "Una vez"],
+    "correcta": 2,
+    "categoria": "Historia",
+    "puntos": 60,
+    "explicacion": "Es el único libro de la Biblia donde no aparece el nombre de Dios, aunque Su providencia se ve en todo el relato."
+  },
+  {
+    "id": 62,
+    "nivel": 6,
+    "pregunta": "¿Cuál era el nombre hebreo de la reina Ester?",
+    "opciones": ["Hadasa", "Rut", "Miriam", "Sefora"],
+    "correcta": 0,
+    "categoria": "Historia",
+    "puntos": 55,
+    "explicacion": "Hadasa significa 'mirto'. Ester era su nombre persa (Ester 2:7)."
+  },
+  {
+    "id": 63,
+    "nivel": 6,
+    "pregunta": "¿Quién fue el primer rey de Israel?",
+    "opciones": ["David", "Saúl", "Salomón", "Samuel"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 50,
+    "explicacion": "Saúl, hijo de Cis, de la tribu de Benjamín, fue ungido por Samuel (1 Samuel 10)."
+  },
+  {
+    "id": 64,
+    "nivel": 6,
+    "pregunta": "¿A qué iglesia escribió Pablo sobre la 'armadura de Dios'?",
+    "opciones": ["Corintios", "Gálatas", "Efesios", "Filipenses"],
+    "correcta": 2,
+    "categoria": "Cartas",
+    "puntos": 50,
+    "explicacion": "En Efesios 6 se detalla cada pieza de la armadura espiritual del cristiano."
+  },
+  {
+    "id": 65,
+    "nivel": 5,
+    "pregunta": "¿Qué ciudad fue destruida junto con Sodoma por su gran maldad?",
+    "opciones": ["Nínive", "Gomorra", "Jericó", "Babilonia"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 40,
+    "explicacion": "Dios hizo llover fuego y azufre sobre ambas ciudades (Génesis 19)."
+  },
+  {
+    "id": 66,
+    "nivel": 5,
+    "pregunta": "¿Quién era el compañero de viaje de Pablo cuando ocurrió el terremoto en la cárcel de Filipos?",
+    "opciones": ["Bernabé", "Silas", "Timoteo", "Lucas"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 45,
+    "explicacion": "Pablo y Silas cantaban himnos cuando sobrevino el terremoto (Hechos 16)."
+  },
+  {
+    "id": 67,
+    "nivel": 5,
+    "pregunta": "¿Cuál es la 'bienaventuranza' para los que lloran según el Sermón del Monte?",
+    "opciones": ["Verán a Dios", "Recibirán consolación", "Heredarán la tierra", "Serán saciados"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 40,
+    "explicacion": "Mateo 5:4 dice: 'Bienaventurados los que lloran, porque ellos recibirán consolación'."
+  },
+  {
+    "id": 68,
+    "nivel": 6,
+    "pregunta": "¿Qué profeta vio un valle lleno de huesos secos que cobraban vida?",
+    "opciones": ["Isaías", "Jeremías", "Ezequiel", "Daniel"],
+    "correcta": 2,
+    "categoria": "Profetas",
+    "puntos": 55,
+    "explicacion": "Ezequiel 37 relata esta visión sobre la restauración de Israel por el Espíritu de Dios."
+  },
+  {
+    "id": 69,
+    "nivel": 6,
+    "pregunta": "¿Cuántos años estuvo el pueblo de Israel cautivo en Babilonia?",
+    "opciones": ["40 años", "70 años", "100 años", "400 años"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 55,
+    "explicacion": "Tal como profetizó Jeremías, el cautiverio duró siete décadas (Jeremías 25:11)."
+  },
+  {
+    "id": 70,
+    "nivel": 6,
+    "pregunta": "¿Quién escribió el libro de Lamentaciones?",
+    "opciones": ["David", "Jeremías", "Ezequiel", "Salomón"],
+    "correcta": 1,
+    "categoria": "Profetas",
+    "puntos": 55,
+    "explicacion": "Jeremías expresó su dolor por la destrucción de Jerusalén en este libro poético."
+  },
+  {
+    "id": 71,
+    "nivel": 5,
+    "pregunta": "¿Cómo se llamaba el mar donde Jesús calmó la tempestad?",
+    "opciones": ["Mar Muerto", "Mar de Galilea", "Mar Rojo", "Mar Grande"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 40,
+    "explicacion": "También conocido como Lago de Genesaret o Mar de Tiberias (Marcos 4)."
+  },
+  {
+    "id": 72,
+    "nivel": 5,
+    "pregunta": "¿Qué discípulo dudó de la resurrección de Jesús hasta que vio las heridas en Sus manos?",
+    "opciones": ["Pedro", "Andrés", "Tomás", "Felipe"],
+    "correcta": 2,
+    "categoria": "Evangelios",
+    "puntos": 45,
+    "explicacion": "Tomás dijo que no creería si no metía su dedo en el lugar de los clavos (Juan 20:25)."
+  },
+  {
+    "id": 73,
+    "nivel": 6,
+    "pregunta": "¿Cuál es la 'Sola' que afirma que la Biblia es la única regla de fe y conducta?",
+    "opciones": ["Sola Fide", "Sola Gratia", "Sola Scriptura", "Solus Christus"],
+    "correcta": 2,
+    "categoria": "Doctrina",
+    "puntos": 60,
+    "explicacion": "Sola Scriptura es el pilar que reconoce a la Escritura como autoridad final."
+  },
+  {
+    "id": 74,
+    "nivel": 6,
+    "pregunta": "¿A qué apóstol se le conoce como el 'apóstol de los gentiles'?",
+    "opciones": ["Pedro", "Pablo", "Juan", "Santiago"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 50,
+    "explicacion": "Pablo fue llamado específicamente para llevar el evangelio a las naciones no judías (Romanos 11:13)."
+  },
+  {
+    "id": 75,
+    "nivel": 6,
+    "pregunta": "¿Qué animal descendió del cielo en una sábana en la visión de Pedro en Jope?",
+    "opciones": ["Solo ovejas", "Aves del cielo", "Animales limpios e inmundos", "Leones"],
+    "correcta": 2,
+    "categoria": "Hechos",
+    "puntos": 55,
+    "explicacion": "Esta visión enseñó a Pedro que no debía llamar común o inmundo a lo que Dios limpió (Hechos 10)."
+  },
+  {
+    "id": 76,
+    "nivel": 7,
+    "pregunta": "¿Qué nombre le dio Dios a Daniel en Babilonia?",
+    "opciones": ["Sadrac", "Mesac", "Beltsasar", "Abed-nego"],
+    "correcta": 2,
+    "categoria": "Profetas",
+    "puntos": 60,
+    "explicacion": "El jefe de los eunucos le puso el nombre de Beltsasar (Daniel 1:7)."
+  },
+  {
+    "id": 77,
+    "nivel": 7,
+    "pregunta": "¿Quién fue el padre de Matusalén, el hombre que más años vivió?",
+    "opciones": ["Lamec", "Enoc", "Jared", "Set"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 65,
+    "explicacion": "Enoc caminó con Dios y fue el padre de Matusalén (Génesis 5:21)."
+  },
+  {
+    "id": 78,
+    "nivel": 7,
+    "pregunta": "¿Cuál de las siete iglesias del Apocalipsis es llamada la 'iglesia tibia'?",
+    "opciones": ["Filadelfia", "Sardis", "Laodicea", "Éfeso"],
+    "correcta": 2,
+    "categoria": "Profecía",
+    "puntos": 70,
+    "explicacion": "A Laodicea se le dice: 'Por cuanto eres tibio... te vomitaré de mi boca' (Apocalipsis 3:16)."
+  },
+  {
+    "id": 79,
+    "nivel": 7,
+    "pregunta": "¿Qué madera se utilizó para construir el Arca de la Alianza?",
+    "opciones": ["Cedro", "Encina", "Acacia", "Gofer"],
+    "correcta": 2,
+    "categoria": "Pentateuco",
+    "puntos": 65,
+    "explicacion": "Dios ordenó construirla de madera de acacia y recubrirla de oro puro (Éxodo 25:10)."
+  },
+  {
+    "id": 80,
+    "nivel": 7,
+    "pregunta": "¿Cómo se llamaba el monte donde murió Aarón?",
+    "opciones": ["Monte Nebo", "Monte Hor", "Monte Sinaí", "Monte Carmelo"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 60,
+    "explicacion": "Aarón murió en la cumbre del monte Hor y allí fue sucedido por su hijo Eleazar (Números 20:28)."
+  },
+  {
+    "id": 81,
+    "nivel": 7,
+    "pregunta": "¿Qué profeta fue contemporáneo de la reconstrucción del Templo y animó a Zorobabel?",
+    "opciones": ["Ageo", "Malaquías", "Ezequiel", "Oseas"],
+    "correcta": 0,
+    "categoria": "Profetas",
+    "puntos": 65,
+    "explicacion": "Ageo profetizó para animar al pueblo a terminar la casa de Dios (Ageo 1)."
+  },
+  {
+    "id": 82,
+    "nivel": 7,
+    "pregunta": "¿Cuál era el nombre del mar donde los discípulos estaban pescando cuando Jesús les dijo que echaran la red a la derecha?",
+    "opciones": ["Mar Muerto", "Mar de Tiberias", "Mar Rojo", "Mar Mediterráneo"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 60,
+    "explicacion": "Juan 21 registra esta aparición de Jesús resucitado a orillas del Mar de Tiberias."
+  },
+  {
+    "id": 83,
+    "nivel": 7,
+    "pregunta": "¿Cuántos años reinó David en total sobre Israel?",
+    "opciones": ["33 años", "40 años", "50 años", "7 años"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 60,
+    "explicacion": "Reinó 7 años en Hebrón y 33 en Jerusalén, sumando 40 años (2 Samuel 5:4-5)."
+  },
+  {
+    "id": 84,
+    "nivel": 7,
+    "pregunta": "¿Qué apóstol escribió: 'La fe sin obras está muerta'?",
+    "opciones": ["Pablo", "Juan", "Santiago", "Pedro"],
+    "correcta": 2,
+    "categoria": "Cartas",
+    "puntos": 70,
+    "explicacion": "Santiago enfatiza que la verdadera fe se demuestra mediante acciones (Santiago 2:17)."
+  },
+  {
+    "id": 85,
+    "nivel": 7,
+    "pregunta": "¿Quién fue el sucesor del rey Salomón, bajo cuyo reinado se dividió el reino?",
+    "opciones": ["Jeroboam", "Roboam", "Josafat", "Acab"],
+    "correcta": 1,
+    "categoria": "Historia",
+    "puntos": 65,
+    "explicacion": "Debido a la dureza de Roboam, diez tribus se rebelaron siguiendo a Jeroboam (1 Reyes 12)."
+  },
+  {
+    "id": 86,
+    "nivel": 7,
+    "pregunta": "¿Qué significa el nombre 'Emanuel'?",
+    "opciones": ["Dios es amor", "Dios con nosotros", "El Señor salva", "Ungido de Dios"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 60,
+    "explicacion": "Es el nombre profético de Jesús que significa que Dios se hizo hombre (Mateo 1:23)."
+  },
+  {
+    "id": 87,
+    "nivel": 7,
+    "pregunta": "¿Quién era el rey de Salem y sacerdote del Dios Altísimo que bendijo a Abraham?",
+    "opciones": ["Melquisedec", "Abimelec", "Jetro", "Faraón"],
+    "correcta": 0,
+    "categoria": "Historia",
+    "puntos": 75,
+    "explicacion": "Abraham le dio los diezmos de todo tras la victoria sobre los reyes (Génesis 14:18)."
+  },
+  {
+    "id": 88,
+    "nivel": 7,
+    "pregunta": "¿En qué libro de la Biblia se encuentra la historia de la torre de Babel?",
+    "opciones": ["Éxodo", "Génesis", "Levítico", "Daniel"],
+    "correcta": 1,
+    "categoria": "Pentateuco",
+    "puntos": 60,
+    "explicacion": "La confusión de las lenguas ocurrió en la llanura de Sinar (Génesis 11)."
+  },
+  {
+    "id": 89,
+    "nivel": 7,
+    "pregunta": "¿Cómo se llamaban las dos parteras egipcias que temieron a Dios y no mataron a los niños hebreos?",
+    "opciones": ["Sifra y Fúa", "Lea y Raquel", "Miriam y Débora", "Noemí y Rut"],
+    "correcta": 0,
+    "categoria": "Pentateuco",
+    "puntos": 75,
+    "explicacion": "Dios las prosperó porque desobedecieron al Faraón para obedecer a Dios (Éxodo 1:15-21)."
+  },
+  {
+    "id": 90,
+    "nivel": 7,
+    "pregunta": "¿Cuál de estos no es uno de los 'muros' mencionados en la visión de las 70 semanas de Daniel?",
+    "opciones": ["Plaza", "Foso", "Templo", "Tiempos angustiosos"],
+    "correcta": 2,
+    "categoria": "Profecía",
+    "puntos": 80,
+    "explicacion": "Daniel 9:25 menciona que se volverá a edificar la plaza y el muro en tiempos angustiosos."
+  },
+  {
+    "id": 91,
+    "nivel": 7,
+    "pregunta": "¿Quién fue el juez que pidió la señal del vellón de lana seco y mojado?",
+    "opciones": ["Sansón", "Gedeón", "Barac", "Jefté"],
+    "correcta": 1,
+    "categoria": "Jueces",
+    "puntos": 65,
+    "explicacion": "Gedeón buscaba confirmar el llamado de Dios para liberar a Israel de los madianitas (Jueces 6)."
+  },
+  {
+    "id": 92,
+    "nivel": 7,
+    "pregunta": "¿En qué ciudad Pablo tuvo la visión de un hombre macedonio pidiéndole ayuda?",
+    "opciones": ["Troas", "Éfeso", "Corinto", "Filipos"],
+    "correcta": 0,
+    "categoria": "Hechos",
+    "puntos": 70,
+    "explicacion": "Fue en Troas donde el Espíritu le mostró que debía pasar a Macedonia (Hechos 16:8-9)."
+  },
+  {
+    "id": 93,
+    "nivel": 7,
+    "pregunta": "¿Quién fue el gobernador romano que se lavó las manos durante el juicio de Jesús?",
+    "opciones": ["Herodes", "Poncio Pilato", "Félix", "Festo"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 60,
+    "explicacion": "Lo hizo para simbolizar que no era responsable de la muerte de un hombre justo (Mateo 27:24)."
+  },
+  {
+    "id": 94,
+    "nivel": 7,
+    "pregunta": "¿Cuál es la 'Sola' que enfatiza que la salvación es solo por mérito de Cristo?",
+    "opciones": ["Sola Fide", "Sola Gratia", "Solus Christus", "Soli Deo Gloria"],
+    "correcta": 2,
+    "categoria": "Doctrina",
+    "puntos": 75,
+    "explicacion": "Solus Christus enseña que no hay otro mediador ni otro nombre bajo el cielo para salvación."
+  },
+  {
+    "id": 95,
+    "nivel": 7,
+    "pregunta": "¿Qué profeta fue tragado por un gran pez?",
+    "opciones": ["Oseas", "Amós", "Jonás", "Miqueas"],
+    "correcta": 2,
+    "categoria": "Profetas",
+    "puntos": 60,
+    "explicacion": "Jonás pasó tres días y tres noches en el vientre del pez por intentar huir de Dios (Jonás 1)."
+  },
+  {
+    "id": 96,
+    "nivel": 7,
+    "pregunta": "¿Cómo se llamaba la mujer de Lapidot que fue la única jueza de Israel?",
+    "opciones": ["Débora", "Jael", "Abigaíl", "Hulda"],
+    "correcta": 0,
+    "categoria": "Jueces",
+    "puntos": 65,
+    "explicacion": "Débora juzgaba a Israel sentada bajo una palmera (Jueces 4:4-5)."
+  },
+  {
+    "id": 97,
+    "nivel": 7,
+    "pregunta": "¿Quién fue el apóstol que reemplazó a Judas Iscariote?",
+    "opciones": ["Bernabé", "Matías", "Pablo", "Esteban"],
+    "correcta": 1,
+    "categoria": "Hechos",
+    "puntos": 70,
+    "explicacion": "Fue elegido por suerte tras la oración de los once apóstoles originales (Hechos 1:26)."
+  },
+  {
+    "id": 98,
+    "nivel": 7,
+    "pregunta": "¿A qué se refiere la Biblia cuando habla del 'Alfa y la Omega'?",
+    "opciones": ["Al principio y al fin", "A la ley y la gracia", "Al cielo y la tierra", "A los ángeles"],
+    "correcta": 0,
+    "categoria": "Profecía",
+    "puntos": 65,
+    "explicacion": "Son la primera y última letra del alfabeto griego, aplicadas a Dios y a Cristo (Apocalipsis 1:8)."
+  },
+  {
+    "id": 99,
+    "nivel": 7,
+    "pregunta": "¿Cuál es el 'gran mandamiento' de la ley según Jesús?",
+    "opciones": ["Honrar a los padres", "Amar a Dios sobre todas las cosas", "No robar", "Santificar el sábado"],
+    "correcta": 1,
+    "categoria": "Evangelios",
+    "puntos": 60,
+    "explicacion": "Jesús citó el Shemá: 'Amarás al Señor tu Dios con todo tu corazón...' (Mateo 22:37)."
+  },
+  {
+    "id": 100,
+    "nivel": 7,
+    "pregunta": "¿Qué ciudad tiene puertas de perlas y calles de oro puro según Apocalipsis?",
+    "opciones": ["La antigua Jerusalén", "La Nueva Jerusalén", "Babilonia", "Roma"],
+    "correcta": 1,
+    "categoria": "Profecía",
+    "puntos": 80,
+    "explicacion": "Juan describe la ciudad celestial que desciende del cielo de parte de Dios (Apocalipsis 21)."
+  }
+]

@@ -232,7 +232,6 @@
             <div class="header-top">
                 <h1 style="font-size: 1.8rem;">Clases</h1>
             </div>
-            
             <div id="item-class-1" class="glass-panel" style="padding: 20px; display: flex; align-items: center; cursor: pointer;" onclick="openLesson1()">
                 <div style="font-size: 2rem; margin-right: 15px; opacity: 0.8;">📜</div>
                 <div style="flex: 1;">
@@ -296,27 +295,10 @@
                     <div class="accordion-header"><span class="accordion-title">1. Sola Scriptura</span> <span>▼</span></div>
                     <div class="accordion-content">La Biblia es la única autoridad final e infalible para la fe. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 2 Timoteo 3:16</div></div>
                 </div>
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header"><span class="accordion-title">2. Sola Fide</span> <span>▼</span></div>
-                    <div class="accordion-content">Justificados solamente por la fe, sin obras de la ley. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 Romanos 5:1</div></div>
                 </div>
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header"><span class="accordion-title">3. Sola Gratia</span> <span>▼</span></div>
-                    <div class="accordion-content">La salvación es un regalo inmerecido de Dios. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 Efesios 2:8</div></div>
-                </div>
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header"><span class="accordion-title">4. Solus Christus</span> <span>▼</span></div>
-                    <div class="accordion-content">Cristo es el único mediador entre Dios y los hombres. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 1 Timoteo 2:5</div></div>
-                </div>
-                <div class="accordion-item" onclick="toggleAccordion(this)">
-                    <div class="accordion-header"><span class="accordion-title">5. Soli Deo Gloria</span> <span>▼</span></div>
-                    <div class="accordion-content">Todo propósito es para la gloria de Dios. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 Romanos 11:36</div></div>
-                </div>
-            </div>
             <button id="btn-doctrina" class="btn-action" onclick="completeTask('doctrina')">
                 <span>Marcar Fundamento Leído</span>
             </button>
-            <div style="height: 60px;"></div>
         </div>
 
         <div id="screen-ai" class="screen">
@@ -324,19 +306,15 @@
                 <button onclick="switchTab('tab-home')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); width: 36px; height: 36px; border-radius: 50%;">←</button>
                 <h2 style="margin: 0; font-size: 1.2rem;">Sabiduría IA</h2>
             </div>
-
             <div class="glass-panel" style="padding: 15px; background: rgba(30, 30, 50, 0.9);">
                 <div id="chat-box" class="chat-container">
-                    <div class="chat-bubble ai">
-                        Shalom. Soy tu asistente bíblico. ¿En qué puedo ayudarte hoy o qué consejo necesitas?
-                    </div>
+                    <div class="chat-bubble ai">Shalom. Soy tu asistente bíblico. ¿En qué puedo ayudarte hoy?</div>
                 </div>
                 <div class="chat-input-area">
                     <input type="text" id="user-input" class="chat-input" placeholder="Escribe aquí..." onkeypress="if(event.key === 'Enter') simulateAIResponse()">
                     <button class="btn-send" onclick="simulateAIResponse()">➤</button>
                 </div>
             </div>
-            <p style="text-align: center; font-size: 0.7rem; color: #666; margin-top: 10px;">IA impulsada por Google Gemini.</p>
         </div>
 
         <div id="screen-links" class="screen">
@@ -344,103 +322,46 @@
                 <button onclick="switchTab('tab-home')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); width: 36px; height: 36px; border-radius: 50%;">←</button>
                 <h2 style="margin: 0; font-size: 1.2rem;">Conexión</h2>
             </div>
-             <a href="#" class="glass-panel" style="display:flex; align-items:center; padding:20px; text-decoration:none; color:inherit; margin-bottom:10px;">
-                <span style="font-size:1.5rem; margin-right:15px">💬</span>
-                <div><h3 style="margin:0; font-size:1rem">WhatsApp</h3><p style="margin:0; font-size:0.8rem; color:var(--text-muted)">Grupo de estudio</p></div>
-            </a>
-            <a href="#" class="glass-panel" style="display:flex; align-items:center; padding:20px; text-decoration:none; color:inherit; margin-bottom:10px;">
-                <span style="font-size:1.5rem; margin-right:15px">📺</span>
-                <div><h3 style="margin:0; font-size:1rem">YouTube</h3><p style="margin:0; font-size:0.8rem; color:var(--text-muted)">Clases grabadas</p></div>
-            </a>
-        </div>
+            </div>
 
         <div id="tab-profile" class="screen">
-            <div class="header-top"><h1>Mi Perfil</h1></div>
-            
-            <div class="glass-panel profile-card-header">
-                <div class="profile-avatar-large">👤</div>
-                <input type="text" id="profile-name" class="profile-input" value="Estudiante" onchange="saveName(this.value)">
-                <span id="rank-badge" class="rank-badge">Creyente Iniciado</span>
-                <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px;">
-                        <div id="stat-class" style="font-size: 1.8rem; font-weight: bold;">0</div>
-                        <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Clases</div>
-                    </div>
-                    <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px;">
-                        <div id="stat-doc" style="font-size: 1.8rem; font-weight: bold;">0</div>
-                        <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">Doctrina</div>
-                    </div>
-                </div>
             </div>
-            
-            <div class="glass-panel" style="padding: 20px;">
-                <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: var(--gold-solid);">Próximos Logros</h3>
-                <div style="opacity: 0.5; font-size: 0.9rem; margin-bottom: 10px;">🔒 Medalla: Guerrero de Oración</div>
-                <div style="opacity: 0.5; font-size: 0.9rem;">🔒 Medalla: Maestro Bíblico</div>
-            </div>
-        </div>
 
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" id="nav-home" onclick="switchTab('tab-home')">
-            <div class="nav-icon">🏠</div>
-            <span>Inicio</span>
-        </div>
-        <div class="nav-item" id="nav-classes" onclick="switchTab('tab-classes')">
-            <div class="nav-icon">📖</div>
-            <span>Clases</span>
-        </div>
-        <div class="nav-item" id="nav-profile" onclick="switchTab('tab-profile')">
-            <div class="nav-icon">👤</div>
-            <span>Perfil</span>
-        </div>
+        <div class="nav-item active" id="nav-home" onclick="switchTab('tab-home')">🏠<span>Inicio</span></div>
+        <div class="nav-item" id="nav-classes" onclick="switchTab('tab-classes')">📖<span>Clases</span></div>
+        <div class="nav-item" id="nav-profile" onclick="switchTab('tab-profile')">👤<span>Perfil</span></div>
     </div>
 
     <script>
-        // --- 1. SISTEMA DE SALUDO DINÁMICO ---
+        // --- 1. SALUDO ---
         function setGreeting() {
             const hour = new Date().getHours();
             const name = localStorage.getItem('uName') || 'Estudiante';
-            let greeting = 'Hola';
-            if (hour < 12) greeting = 'Buenos días';
-            else if (hour < 19) greeting = 'Buenas tardes';
-            else greeting = 'Buenas noches';
+            let greeting = hour < 12 ? 'Buenos días' : (hour < 19 ? 'Buenas tardes' : 'Buenas noches');
             document.getElementById('greeting-text').innerText = `${greeting}, ${name}`;
-            document.getElementById('profile-name').value = name;
         }
 
-        // --- 2. NAVEGACIÓN (TABS) ---
+        // --- 2. NAVEGACIÓN ---
         function switchTab(tabId) {
-            ['tab-home', 'tab-classes', 'tab-profile', 'screen-lesson-1', 'screen-doctrina', 'screen-links', 'screen-ai'].forEach(id => {
-                document.getElementById(id).classList.remove('active');
-            });
-            
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             window.scrollTo(0,0);
-
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            if(tabId === 'tab-home') document.getElementById('nav-home').classList.add('active');
-            if(tabId === 'tab-classes' || tabId === 'screen-lesson-1') document.getElementById('nav-classes').classList.add('active');
-            if(tabId === 'tab-profile') document.getElementById('nav-profile').classList.add('active');
-            
-            updateData();
         }
 
         function openLesson1() { switchTab('screen-lesson-1'); }
         function openDoctrina() { switchTab('screen-doctrina'); }
-        function openLinks() { switchTab('screen-links'); }
         function openAI() { switchTab('screen-ai'); }
 
-        // --- 3. LÓGICA IA ROBUSTA (Solución) ---
+        // --- 3. LÓGICA IA MEJORADA (Enero 2026) ---
         async function simulateAIResponse() {
-            // Tu clave real de Arbolrenacer
             const API_KEY = "AIzaSyDa203c7VieDov1aBG70Xg-Z606CWl3KKs"; 
             const input = document.getElementById('user-input');
             const text = input.value.trim();
             if(!text) return;
 
-            // Interfaz de Usuario
             const chatBox = document.getElementById('chat-box');
             const userBubble = document.createElement('div');
             userBubble.className = 'chat-bubble user';
@@ -449,34 +370,26 @@
             input.value = '';
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Burbuja de "Pensando..."
             const aiBubble = document.createElement('div');
             aiBubble.className = 'chat-bubble ai';
-            aiBubble.innerText = "Pensando..."; 
+            aiBubble.innerText = "Buscando sabiduría..."; 
             chatBox.appendChild(aiBubble);
-            chatBox.scrollTop = chatBox.scrollHeight;
 
             try {
-                // CAMBIO A v1beta PARA MÁXIMA COMPATIBILIDAD CON gemini-1.5-flash
+                // Probamos con el modelo directo gemini-1.5-flash
                 const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        contents: [{
-                            parts: [{ 
-                                text: `Eres un mentor bíblico sabio. Nombre del alumno: ${localStorage.getItem('uName') || 'Estudiante'}. Responde brevemente y con base bíblica a: ${text}` 
-                            }]
-                        }]
+                        contents: [{ parts: [{ text: `Eres un mentor bíblico sabio. Responde brevemente y con base bíblica a: ${text}` }] }]
                     })
                 });
 
                 const data = await response.json();
                 
                 if (data.error) {
-                    console.error("Error detallado de Google:", data.error);
-                    aiBubble.innerText = "Error de Google: " + data.error.message;
-                } 
-                else if (data.candidates && data.candidates[0].content) {
+                    aiBubble.innerText = "Aviso: " + data.error.message;
+                } else if (data.candidates && data.candidates[0].content) {
                     const aiText = data.candidates[0].content.parts[0].text;
                     aiBubble.innerText = "";
                     let i = 0;
@@ -486,69 +399,28 @@
                         i++;
                         if (i >= aiText.length) clearInterval(typing);
                     }, 20);
-                } else {
-                    aiBubble.innerText = "No pude entender tu consulta. Intenta de nuevo.";
                 }
-
             } catch (error) {
-                console.error("Error de Red:", error);
-                aiBubble.innerText = "Error de conexión. Verifica tu internet o si la clave tiene permisos.";
+                aiBubble.innerText = "Error de conexión. Intenta de nuevo.";
             }
         }
 
-        // --- 4. FUNCIONES ORIGINALES ---
-        function toggleAccordion(el) {
-            const isActive = el.classList.contains('active');
-            document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('active'));
-            if (!isActive) el.classList.add('active');
-        }
-
-        function saveName(val) {
-            localStorage.setItem('uName', val);
-            setGreeting();
-        }
-
-        function showToast() {
-            const t = document.getElementById('toast');
-            t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 3000);
-        }
-
+        // --- 4. OTROS ---
         function completeTask(key) {
             localStorage.setItem(key, 'done');
-            showToast();
             updateData();
-            if(key === 'class1') document.getElementById('btn-lesson-1').classList.add('done');
-            if(key === 'doctrina') document.getElementById('btn-doctrina').classList.add('done');
         }
 
         function updateData() {
-            let p = 0; let cCount = 0; let dCount = 0;
-            if(localStorage.getItem('class1') === 'done') {
-                p += 50; cCount++;
-                document.getElementById('item-class-1').classList.add('completed');
-                document.getElementById('btn-lesson-1').innerHTML = "<span>¡Completada! ✓</span>";
-                document.getElementById('btn-lesson-1').classList.add('done');
-            }
-            if(localStorage.getItem('doctrina') === 'done') {
-                p += 50; dCount++;
-                document.getElementById('btn-doctrina').innerHTML = "<span>¡Completado! ✓</span>";
-                document.getElementById('btn-doctrina').classList.add('done');
-            }
+            let p = 0;
+            if(localStorage.getItem('class1') === 'done') p += 50;
+            if(localStorage.getItem('doctrina') === 'done') p += 50;
             document.getElementById('main-progress-bar').style.width = p + "%";
             document.getElementById('progress-percent').innerText = p + "%";
-            document.getElementById('stat-class').innerText = cCount;
-            document.getElementById('stat-doc').innerText = dCount;
-
-            let rank = "Creyente Iniciado";
-            if(p >= 50) rank = "Discípulo Fiel";
-            if(p >= 100) rank = "Obrero Aprobado";
-            document.getElementById('rank-badge').innerText = rank;
         }
 
         setGreeting();
         updateData();
-
     </script>
 </body>
 </html>

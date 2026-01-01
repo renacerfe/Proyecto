@@ -16,6 +16,8 @@
             --text-muted: #9ca3af;
             --danger: #ef4444;
             --success: #10b981;
+            --kids-gradient: linear-gradient(135deg, rgba(255, 167, 38, 0.2), rgba(255, 238, 88, 0.1));
+            --ai-gradient: linear-gradient(135deg, rgba(60, 100, 255, 0.2), rgba(150, 50, 255, 0.1)); 
             --nav-height: 70px;
         }
 
@@ -28,7 +30,7 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: calc(var(--nav-height) + 20px); /* Espacio para el menú abajo */
+            padding-bottom: calc(var(--nav-height) + 20px);
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(60, 100, 255, 0.05) 0%, transparent 25%);
@@ -38,11 +40,12 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes pulse-kids { 0% { transform: scale(1); } 50% { transform: scale(1.02); box-shadow: 0 0 15px rgba(255, 167, 38, 0.3); } 100% { transform: scale(1); } }
+        @keyframes pulse-ai { 0% { box-shadow: 0 0 5px rgba(100, 100, 255, 0.2); } 50% { box-shadow: 0 0 20px rgba(100, 100, 255, 0.5); border-color: rgba(100,100,255, 0.5); } 100% { box-shadow: 0 0 5px rgba(100, 100, 255, 0.2); } }
 
         .screen { display: none; animation: fadeIn 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); padding: 20px; }
         .screen.active { display: block; }
 
-        /* --- UI COMPONENTS --- */
         .glass-panel {
             background: var(--glass-surface);
             backdrop-filter: blur(20px);
@@ -64,24 +67,20 @@
             animation: shimmer 5s linear infinite;
         }
 
-        /* --- HEADER & GREETING --- */
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-top: 10px; }
         .greeting-box h1 { margin: 0; font-size: 1.5rem; letter-spacing: -0.5px; }
         .greeting-box p { margin: 2px 0 0; font-size: 0.85rem; color: var(--text-muted); }
         .mini-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold-metal); display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; border: 2px solid rgba(255,255,255,0.1); }
 
-        /* --- PROGRESS BAR --- */
         .progress-wrapper { margin-bottom: 30px; }
         .progress-header { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gold-solid); margin-bottom: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
         .progress-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; position: relative; }
         .progress-bar { height: 100%; width: 0%; background: var(--gold-metal); border-radius: 10px; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
 
-        /* --- HERO SECTION --- */
         .hero-banner { text-align: center; padding: 40px 20px; position: relative; overflow: hidden; }
         .hero-logo { width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 50%; border: 2px solid var(--gold-solid); background-image: url('logo.png'); background-size: cover; background-position: center; animation: float 6s ease-in-out infinite; box-shadow: 0 0 40px rgba(212,175,55,0.2); }
         .hero-quote { font-style: italic; color: var(--text-muted); font-size: 0.9rem; margin-top: 10px; }
 
-        /* --- BENTO GRID MENU --- */
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .menu-card { padding: 20px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; cursor: pointer; position: relative; }
         .menu-card:active { transform: scale(0.96); }
@@ -91,7 +90,24 @@
         .menu-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; }
         .menu-title { font-size: 1.1rem; margin: 0; color: var(--text-main); font-weight: 600; }
 
-        /* --- TIMELINE (NÚMEROS 12) --- */
+        .menu-card.kids-card { border: 1px solid rgba(255, 200, 50, 0.3); animation: pulse-kids 3s infinite ease-in-out; }
+        .menu-card.kids-card::before { background: var(--kids-gradient); opacity: 1; }
+
+        .menu-card.ai-card { border: 1px solid rgba(100, 100, 255, 0.3); animation: pulse-ai 4s infinite ease-in-out; }
+        .menu-card.ai-card::before { background: var(--ai-gradient); opacity: 1; }
+        .menu-card.ai-card .menu-icon { text-shadow: 0 0 15px rgba(100, 100, 255, 0.8); }
+
+        .chat-container { display: flex; flex-direction: column; gap: 15px; height: 50vh; overflow-y: auto; padding: 10px 0; }
+        .chat-bubble { max-width: 85%; padding: 15px; border-radius: 15px; font-size: 0.95rem; line-height: 1.5; position: relative; animation: fadeIn 0.3s; }
+        .chat-bubble.ai { background: rgba(60, 60, 80, 0.6); align-self: flex-start; border-bottom-left-radius: 2px; border-left: 2px solid #8c9eff; color: #e0e0e0; }
+        .chat-bubble.user { background: var(--gold-metal); align-self: flex-end; border-bottom-right-radius: 2px; color: black; font-weight: 600; }
+        
+        .chat-input-area { display: flex; gap: 10px; margin-top: 15px; }
+        .chat-input { flex: 1; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 25px; padding: 12px 20px; color: white; outline: none; transition: 0.3s; }
+        .chat-input:focus { border-color: var(--gold-solid); background: rgba(255,255,255,0.15); }
+        .btn-send { width: 45px; height: 45px; border-radius: 50%; background: var(--gold-metal); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: transform 0.2s; }
+        .btn-send:active { transform: scale(0.9); }
+
         .timeline-container { position: relative; padding-left: 20px; margin-top: 20px; }
         .timeline-line { position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(to bottom, var(--gold-solid), transparent); }
         .timeline-item { position: relative; padding-left: 25px; margin-bottom: 25px; }
@@ -100,7 +116,6 @@
         .timeline-text { font-size: 0.9rem; color: #ccc; line-height: 1.5; margin: 0; }
         .verse-highlight { display: block; margin-top: 8px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; font-style: italic; font-size: 0.8rem; border-left: 2px solid var(--text-muted); }
 
-        /* --- ACORDEÓN (DOCTRINA) --- */
         .accordion-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
         .accordion-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
         .accordion-title { font-weight: 700; color: var(--gold-solid); text-transform: uppercase; font-size: 0.95rem; }
@@ -108,20 +123,11 @@
         .accordion-item.active .accordion-content { max-height: 200px; padding-bottom: 20px; }
         .accordion-item.active { background: rgba(212,175,55,0.05); }
 
-        /* --- BOTTOM NAVIGATION --- */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%; height: var(--nav-height);
-            background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
-            display: flex; justify-content: space-around; align-items: center;
-            z-index: 100;
-            padding-bottom: 5px; /* Ajuste para móviles modernos */
-        }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--nav-height); background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); display: flex; justify-content: space-around; align-items: center; z-index: 100; padding-bottom: 5px; }
         .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); font-size: 0.7rem; text-decoration: none; padding: 10px; transition: 0.3s; }
         .nav-item.active { color: var(--gold-solid); transform: translateY(-2px); }
         .nav-icon { font-size: 1.4rem; }
 
-        /* --- BOTONES Y BADGES --- */
         .btn-action { width: 100%; padding: 16px; background: var(--gold-metal); color: black; font-weight: 800; border: none; border-radius: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 1rem; box-shadow: 0 5px 20px rgba(212,175,55,0.2); transition: 0.2s; margin-top: 20px; }
         .btn-action:active { transform: scale(0.98); }
         .btn-action.done { background: var(--success); color: white; box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3); }
@@ -129,14 +135,12 @@
         .badge-status { font-size: 0.65rem; background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--success); margin-left: 10px; display: none; }
         .completed .badge-status { display: inline-block; }
 
-        /* --- PERFIL --- */
         .profile-card-header { text-align: center; padding: 30px 20px; }
         .profile-avatar-large { width: 90px; height: 90px; margin: 0 auto 15px; border-radius: 50%; background: var(--gold-metal); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #000; border: 4px solid rgba(0,0,0,0.5); }
         .profile-input { background: transparent; border: none; color: white; font-size: 1.4rem; font-weight: bold; text-align: center; width: 100%; border-bottom: 1px solid transparent; transition: 0.3s; }
         .profile-input:focus { outline: none; border-bottom-color: var(--gold-solid); }
         .rank-badge { display: inline-block; background: rgba(255,215,0,0.1); border: 1px solid var(--gold-solid); color: var(--gold-solid); padding: 5px 15px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-top: 10px; }
 
-        /* TOAST NOTIFICATION */
         #toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: rgba(16, 185, 129, 0.9); backdrop-filter: blur(10px); color: white; padding: 12px 24px; border-radius: 30px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 200; transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; gap: 8px; width: max-content; }
         #toast.show { transform: translateX(-50%) translateY(0); }
 
@@ -190,12 +194,28 @@
                     <h3 class="menu-title">Doctrina</h3>
                 </div>
 
+                <div class="glass-panel menu-card ai-card" onclick="openAI()">
+                    <div>
+                        <div class="menu-icon" style="color: #8c9eff;">🧠</div>
+                        <div class="menu-label" style="color: #b3b9ff; font-weight: 900;">INTELIGENCIA</div>
+                    </div>
+                    <h3 class="menu-title" style="color: #e0e0ff;">SABIDURÍA IA</h3>
+                </div>
+
                 <div class="glass-panel menu-card" onclick="window.location.href='juego.html'">
                     <div>
                         <div class="menu-icon">🎮</div>
                         <div class="menu-label">Recreación</div>
                     </div>
                     <h3 class="menu-title">Juegos</h3>
+                </div>
+
+                <div class="glass-panel menu-card kids-card" onclick="window.location.href='kids.html'">
+                    <div>
+                        <div class="menu-icon" style="text-shadow: 0 0 10px rgba(255, 202, 40, 0.8);">🦁</div>
+                        <div class="menu-label" style="color: #FFCA28; font-weight: 900;">DIVERSIÓN</div>
+                    </div>
+                    <h3 class="menu-title" style="color: #FFE082;">ZONA KIDS</h3>
                 </div>
 
                 <div class="glass-panel menu-card" onclick="openLinks()">
@@ -229,40 +249,33 @@
                 <button onclick="switchTab('tab-classes')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); width: 36px; height: 36px; border-radius: 50%;">←</button>
                 <h2 style="margin: 0; font-size: 1.2rem;">Lección 01</h2>
             </div>
-
             <div class="glass-panel" style="padding: 25px;">
                 <h1 class="gold-text" style="font-size: 1.8rem; margin: 0 0 10px 0;">La Murmuración</h1>
                 <p style="color: var(--text-muted);">Un análisis profundo sobre la autoridad y la envidia.</p>
-
                 <div class="timeline-container">
                     <div class="timeline-line"></div>
-                    
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <h4 class="timeline-title">⚠️ 1. El Problema</h4>
                         <p class="timeline-text">María y Aarón criticaron a Moisés. La excusa fue su esposa, pero la raíz era la envidia.</p>
                         <span class="verse-highlight">"¿Solamente por Moisés ha hablado Jehová?" (Núm 12:2)</span>
                     </div>
-
                     <div class="timeline-item">
                         <div class="timeline-dot" style="border-color: #f59e0b; box-shadow: 0 0 10px #f59e0b;"></div>
                         <h4 class="timeline-title" style="color: #f59e0b;">🔥 2. La Respuesta Divina</h4>
                         <p class="timeline-text">Dios no guardó silencio. Los llamó repentinamente al Tabernáculo.</p>
                     </div>
-
                     <div class="timeline-item">
                         <div class="timeline-dot" style="border-color: var(--danger); box-shadow: 0 0 10px var(--danger);"></div>
                         <h4 class="timeline-title" style="color: var(--danger);">⚡ 3. La Consecuencia</h4>
                         <p class="timeline-text">María quedó leprosa, blanca como la nieve. La murmuración trae enfermedad espiritual.</p>
                     </div>
-
                     <div class="timeline-item">
                         <div class="timeline-dot" style="border-color: var(--success); box-shadow: 0 0 10px var(--success);"></div>
                         <h4 class="timeline-title" style="color: var(--success);">❤️ 4. La Restauración</h4>
                         <p class="timeline-text">Moisés oró por ella. Dios la sanó, pero hubo disciplina de 7 días.</p>
                     </div>
                 </div>
-
                 <button id="btn-lesson-1" class="btn-action" onclick="completeTask('class1')">
                     <span>Completar Lección</span>
                 </button>
@@ -274,43 +287,56 @@
                 <button onclick="switchTab('tab-home')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); width: 36px; height: 36px; border-radius: 50%;">←</button>
                 <h2 style="margin: 0; font-size: 1.2rem;">Fundamentos</h2>
             </div>
-
             <div class="glass-panel">
                 <div style="padding: 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
                     <h2 class="gold-text" style="margin: 0;">LAS 5 SOLAS</h2>
                     <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Pilares de la Reforma Protestante</p>
                 </div>
-
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header"><span class="accordion-title">1. Sola Scriptura</span> <span>▼</span></div>
                     <div class="accordion-content">La Biblia es la única autoridad final e infalible para la fe. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 2 Timoteo 3:16</div></div>
                 </div>
-
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header"><span class="accordion-title">2. Sola Fide</span> <span>▼</span></div>
                     <div class="accordion-content">Justificados solamente por la fe, sin obras de la ley. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 Romanos 5:1</div></div>
                 </div>
-
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header"><span class="accordion-title">3. Sola Gratia</span> <span>▼</span></div>
                     <div class="accordion-content">La salvación es un regalo inmerecido de Dios. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 Efesios 2:8</div></div>
                 </div>
-
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header"><span class="accordion-title">4. Solus Christus</span> <span>▼</span></div>
                     <div class="accordion-content">Cristo es el único mediador entre Dios y los hombres. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 1 Timoteo 2:5</div></div>
                 </div>
-
                 <div class="accordion-item" onclick="toggleAccordion(this)">
                     <div class="accordion-header"><span class="accordion-title">5. Soli Deo Gloria</span> <span>▼</span></div>
                     <div class="accordion-content">Todo propósito es para la gloria de Dios. <div class="verse-highlight" style="text-align: right; color: var(--gold-solid);">📖 Romanos 11:36</div></div>
                 </div>
             </div>
-
             <button id="btn-doctrina" class="btn-action" onclick="completeTask('doctrina')">
                 <span>Marcar Fundamento Leído</span>
             </button>
             <div style="height: 60px;"></div>
+        </div>
+
+        <div id="screen-ai" class="screen">
+            <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                <button onclick="switchTab('tab-home')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); width: 36px; height: 36px; border-radius: 50%;">←</button>
+                <h2 style="margin: 0; font-size: 1.2rem;">Sabiduría IA</h2>
+            </div>
+
+            <div class="glass-panel" style="padding: 15px; background: rgba(30, 30, 50, 0.9);">
+                <div id="chat-box" class="chat-container">
+                    <div class="chat-bubble ai">
+                        Shalom. Soy tu asistente bíblico. ¿En qué puedo ayudarte hoy o qué consejo necesitas?
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="user-input" class="chat-input" placeholder="Escribe aquí..." onkeypress="if(event.key === 'Enter') simulateAIResponse()">
+                    <button class="btn-send" onclick="simulateAIResponse()">➤</button>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.7rem; color: #666; margin-top: 10px;">IA impulsada por Google Gemini.</p>
         </div>
 
         <div id="screen-links" class="screen">
@@ -335,7 +361,6 @@
                 <div class="profile-avatar-large">👤</div>
                 <input type="text" id="profile-name" class="profile-input" value="Estudiante" onchange="saveName(this.value)">
                 <span id="rank-badge" class="rank-badge">Creyente Iniciado</span>
-
                 <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 15px;">
                         <div id="stat-class" style="font-size: 1.8rem; font-weight: bold;">0</div>
@@ -387,16 +412,13 @@
 
         // --- 2. NAVEGACIÓN (TABS) ---
         function switchTab(tabId) {
-            // Ocultar todas las pantallas principales
-            ['tab-home', 'tab-classes', 'tab-profile', 'screen-lesson-1', 'screen-doctrina', 'screen-links'].forEach(id => {
+            ['tab-home', 'tab-classes', 'tab-profile', 'screen-lesson-1', 'screen-doctrina', 'screen-links', 'screen-ai'].forEach(id => {
                 document.getElementById(id).classList.remove('active');
             });
             
-            // Mostrar la deseada
             document.getElementById(tabId).classList.add('active');
             window.scrollTo(0,0);
 
-            // Actualizar estado del menú inferior
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             if(tabId === 'tab-home') document.getElementById('nav-home').classList.add('active');
             if(tabId === 'tab-classes' || tabId === 'screen-lesson-1') document.getElementById('nav-classes').classList.add('active');
@@ -405,21 +427,69 @@
             updateData();
         }
 
-        // Funciones auxiliares para abrir pantallas específicas
         function openLesson1() { switchTab('screen-lesson-1'); }
         function openDoctrina() { switchTab('screen-doctrina'); }
         function openLinks() { switchTab('screen-links'); }
+        function openAI() { switchTab('screen-ai'); }
 
-        // --- 3. ACORDEÓN ---
+        // --- 3. LÓGICA REAL IA CON GOOGLE GEMINI ---
+        async function simulateAIResponse() {
+            const API_KEY = "AIzaSyDa203c7VieDov1aBG70Xg-Z606CWl3KKs"; 
+            const input = document.getElementById('user-input');
+            const text = input.value.trim();
+            if(!text) return;
+
+            const chatBox = document.getElementById('chat-box');
+            const userBubble = document.createElement('div');
+            userBubble.className = 'chat-bubble user';
+            userBubble.innerText = text;
+            chatBox.appendChild(userBubble);
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            const aiBubble = document.createElement('div');
+            aiBubble.className = 'chat-bubble ai';
+            aiBubble.innerText = "..."; 
+            chatBox.appendChild(aiBubble);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [{ text: `Eres un mentor bíblico sabio de la app "Jesús el Árbol de la Vida". 
+                            Responde de forma breve, amable y basada en la sana doctrina a esta duda de un alumno: ${text}` }]
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                const aiText = data.candidates[0].content.parts[0].text;
+                
+                aiBubble.innerText = "";
+                let i = 0;
+                const typing = setInterval(() => {
+                    aiBubble.innerText += aiText.charAt(i);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                    i++;
+                    if (i > aiText.length - 1) clearInterval(typing);
+                }, 15);
+
+            } catch (error) {
+                aiBubble.innerText = "Hubo un error al conectar. Por favor intenta de nuevo.";
+                console.error(error);
+            }
+        }
+
+        // --- 4. FUNCIONES ORIGINALES ---
         function toggleAccordion(el) {
             const isActive = el.classList.contains('active');
-            // Cerrar todos
             document.querySelectorAll('.accordion-item').forEach(item => item.classList.remove('active'));
-            // Abrir el clickeado si no estaba abierto
             if (!isActive) el.classList.add('active');
         }
 
-        // --- 4. DATA Y PROGRESO ---
         function saveName(val) {
             localStorage.setItem('uName', val);
             setGreeting();
@@ -435,14 +505,12 @@
             localStorage.setItem(key, 'done');
             showToast();
             updateData();
-            // Efecto visual en botón
             if(key === 'class1') document.getElementById('btn-lesson-1').classList.add('done');
             if(key === 'doctrina') document.getElementById('btn-doctrina').classList.add('done');
         }
 
         function updateData() {
             let p = 0; let cCount = 0; let dCount = 0;
-
             if(localStorage.getItem('class1') === 'done') {
                 p += 50; cCount++;
                 document.getElementById('item-class-1').classList.add('completed');
@@ -454,12 +522,8 @@
                 document.getElementById('btn-doctrina').innerHTML = "<span>¡Completado! ✓</span>";
                 document.getElementById('btn-doctrina').classList.add('done');
             }
-
-            // Actualizar barras
             document.getElementById('main-progress-bar').style.width = p + "%";
             document.getElementById('progress-percent').innerText = p + "%";
-            
-            // Actualizar perfil
             document.getElementById('stat-class').innerText = cCount;
             document.getElementById('stat-doc').innerText = dCount;
 
@@ -469,7 +533,6 @@
             document.getElementById('rank-badge').innerText = rank;
         }
 
-        // INICIALIZACIÓN
         setGreeting();
         updateData();
 

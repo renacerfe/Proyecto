@@ -47,13 +47,11 @@
         .glass-panel {
             background: var(--glass-surface);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 24px;
             box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
             margin-bottom: 16px;
             overflow: hidden;
-            position: relative;
         }
 
         .gold-text {
@@ -68,57 +66,41 @@
         .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding-top: 10px; }
         .greeting-box h1 { margin: 0; font-size: 1.5rem; letter-spacing: -0.5px; }
         .greeting-box p { margin: 2px 0 0; font-size: 0.85rem; color: var(--text-muted); }
-        .mini-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold-metal); display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; border: 2px solid rgba(255,255,255,0.1); }
+        .mini-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--gold-metal); display: flex; align-items: center; justify-content: center; color: black; font-weight: bold; }
 
         .progress-wrapper { margin-bottom: 30px; }
-        .progress-header { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gold-solid); margin-bottom: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-        .progress-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; position: relative; }
-        .progress-bar { height: 100%; width: 0%; background: var(--gold-metal); border-radius: 10px; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+        .progress-header { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gold-solid); margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
+        .progress-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; width: 0%; background: var(--gold-metal); transition: width 1s ease; }
 
-        .hero-banner { text-align: center; padding: 40px 20px; position: relative; overflow: hidden; }
-        .hero-logo { width: 120px; height: 120px; margin: 0 auto 15px; border-radius: 50%; border: 2px solid var(--gold-solid); background-image: url('logo.png'); background-size: cover; background-position: center; animation: float 6s ease-in-out infinite; box-shadow: 0 0 40px rgba(212,175,55,0.2); }
-        .hero-quote { font-style: italic; color: var(--text-muted); font-size: 0.9rem; margin-top: 10px; }
+        .hero-banner { text-align: center; padding: 40px 20px; }
+        .hero-logo { width: 100px; height: 100px; margin: 0 auto 15px; border-radius: 50%; border: 2px solid var(--gold-solid); background-image: url('logo.png'); background-size: cover; animation: float 6s ease-in-out infinite; }
 
         .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .menu-card { padding: 20px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s; cursor: pointer; position: relative; }
-        .menu-card:active { transform: scale(0.96); }
+        .menu-card { padding: 20px; min-height: 130px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: 0.2s; }
+        .menu-card:active { transform: scale(0.95); }
         .menu-icon { font-size: 1.8rem; margin-bottom: 10px; }
-        .menu-label { font-size: 0.7rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; }
-        .menu-title { font-size: 1.1rem; margin: 0; color: var(--text-main); font-weight: 600; }
+        .menu-title { font-size: 1.1rem; margin: 0; font-weight: 600; }
 
         .kids-card { border: 1px solid rgba(255, 200, 50, 0.3); background: var(--kids-gradient); }
         .ai-card { border: 1px solid rgba(100, 100, 255, 0.3); background: var(--ai-gradient); }
 
         .chat-container { display: flex; flex-direction: column; gap: 15px; height: 50vh; overflow-y: auto; padding: 10px 0; }
-        .chat-bubble { max-width: 85%; padding: 15px; border-radius: 15px; font-size: 0.95rem; line-height: 1.5; position: relative; animation: fadeIn 0.3s; }
-        .chat-bubble.ai { background: rgba(60, 60, 80, 0.6); align-self: flex-start; border-left: 2px solid #8c9eff; color: #e0e0e0; }
+        .chat-bubble { max-width: 85%; padding: 15px; border-radius: 15px; font-size: 0.95rem; line-height: 1.5; }
+        .chat-bubble.ai { background: rgba(60, 60, 80, 0.6); align-self: flex-start; border-left: 3px solid #8c9eff; }
         .chat-bubble.user { background: var(--gold-metal); align-self: flex-end; color: black; font-weight: 600; }
         
         .chat-input-area { display: flex; gap: 10px; margin-top: 15px; }
         .chat-input { flex: 1; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 25px; padding: 12px 20px; color: white; outline: none; }
-        .btn-send { width: 45px; height: 45px; border-radius: 50%; background: var(--gold-metal); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .btn-send { width: 45px; height: 45px; border-radius: 50%; background: var(--gold-metal); border: none; cursor: pointer; }
 
-        .timeline-container { position: relative; padding-left: 20px; margin-top: 20px; }
-        .timeline-line { position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px; background: linear-gradient(to bottom, var(--gold-solid), transparent); }
-        .timeline-item { position: relative; padding-left: 25px; margin-bottom: 25px; }
-        .timeline-dot { position: absolute; left: -6px; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-deep); border: 2px solid var(--gold-solid); box-shadow: 0 0 10px var(--gold-solid); }
-        .timeline-title { color: var(--gold-solid); font-size: 1rem; margin: 0 0 5px 0; }
-        .timeline-text { font-size: 0.9rem; color: #ccc; line-height: 1.5; margin: 0; }
-
-        .accordion-item { border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .accordion-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .accordion-title { font-weight: 700; color: var(--gold-solid); text-transform: uppercase; font-size: 0.95rem; }
-        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 20px; opacity: 0.8; }
-        .accordion-item.active .accordion-content { max-height: 200px; padding-bottom: 20px; }
-
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--nav-height); background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(20px); border-top: 1px solid var(--glass-border); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); font-size: 0.7rem; text-decoration: none; }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; height: var(--nav-height); background: rgba(10, 10, 15, 0.95); border-top: 1px solid var(--glass-border); display: flex; justify-content: space-around; align-items: center; z-index: 100; }
+        .nav-item { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 0.7rem; text-decoration: none; padding: 10px; }
         .nav-item.active { color: var(--gold-solid); }
 
-        .btn-action { width: 100%; padding: 16px; background: var(--gold-metal); color: black; font-weight: 800; border: none; border-radius: 16px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 20px; }
-        .btn-action.done { background: var(--success); color: white; }
-
-        #toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: var(--success); color: white; padding: 12px 24px; border-radius: 30px; z-index: 200; transition: transform 0.5s; }
+        .btn-action { width: 100%; padding: 16px; background: var(--gold-metal); color: black; font-weight: 800; border: none; border-radius: 16px; cursor: pointer; margin-top: 20px; }
+        
+        #toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-100px); background: var(--success); color: white; padding: 12px 24px; border-radius: 30px; z-index: 200; transition: 0.5s; }
         #toast.show { transform: translateX(-50%) translateY(0); }
     </style>
 </head>
@@ -130,26 +112,26 @@
         <div class="header-top">
             <div class="greeting-box">
                 <h1 class="gold-text" id="greeting-text">Hola</h1>
-                <p>Continúa tu crecimiento espiritual</p>
+                <p>Tu crecimiento espiritual hoy</p>
             </div>
             <div class="mini-avatar" onclick="switchTab('tab-profile')">👤</div>
         </div>
 
         <div class="progress-wrapper">
-            <div class="progress-header"><span>Sabiduría</span><span id="progress-percent">0%</span></div>
+            <div class="progress-header"><span>Nivel de Sabiduría</span><span id="progress-percent">0%</span></div>
             <div class="progress-track"><div id="main-progress-bar" class="progress-bar"></div></div>
         </div>
 
         <div class="glass-panel hero-banner">
             <div class="hero-logo"></div>
             <h2 style="margin: 10px 0;">JESÚS EL ÁRBOL DE LA VIDA</h2>
-            <div class="hero-quote">"Al que venciere, le daré a comer del árbol de la vida." - Ap 2:7</div>
+            <div style="font-style: italic; color: var(--text-muted); font-size: 0.8rem;">"Al que venciere, le daré a comer del árbol de la vida." - Ap 2:7</div>
         </div>
 
         <div class="menu-grid">
             <div class="glass-panel menu-card" onclick="switchTab('tab-classes')">
                 <div class="menu-icon">📜</div>
-                <h3 class="menu-title">Clases Bíblicas</h3>
+                <h3 class="menu-title">Clases</h3>
             </div>
             <div class="glass-panel menu-card" onclick="openDoctrina()">
                 <div class="menu-icon">🏛️</div>
@@ -159,15 +141,23 @@
                 <div class="menu-icon">🧠</div>
                 <h3 class="menu-title">Sabiduría IA</h3>
             </div>
+            <div class="glass-panel menu-card" onclick="window.location.href='juego.html'">
+                <div class="menu-icon">🎮</div>
+                <h3 class="menu-title">Juegos</h3>
+            </div>
             <div class="glass-panel menu-card kids-card" onclick="window.location.href='kids.html'">
                 <div class="menu-icon">🦁</div>
                 <h3 class="menu-title">Zona Kids</h3>
+            </div>
+            <div class="glass-panel menu-card" onclick="switchTab('screen-links')">
+                <div class="menu-icon">🔗</div>
+                <h3 class="menu-title">Enlaces</h3>
             </div>
         </div>
     </div>
 
     <div id="tab-classes" class="screen">
-        <div class="header-top"><h1>Clases</h1></div>
+        <div class="header-top"><h1>Mis Clases</h1></div>
         <div id="item-class-1" class="glass-panel" style="padding: 20px; display: flex; align-items: center; cursor: pointer;" onclick="openLesson1()">
             <div style="font-size: 2rem; margin-right: 15px;">📜</div>
             <div style="flex: 1;">
@@ -178,70 +168,56 @@
         </div>
     </div>
 
-    <div id="screen-lesson-1" class="screen">
-        <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-            <button onclick="switchTab('tab-classes')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); border-radius: 50%; width: 35px; height: 35px;">←</button>
-            <h2 style="margin: 0;">Lección 01</h2>
-        </div>
-        <div class="glass-panel" style="padding: 25px;">
-            <h1 class="gold-text">La Murmuración</h1>
-            <div class="timeline-container">
-                <div class="timeline-line"></div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="timeline-title">⚠️ El Problema</h4>
-                    <p class="timeline-text">María y Aarón criticaron a Moisés. La raíz era la envidia de autoridad.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <h4 class="timeline-title">⚡ La Consecuencia</h4>
-                    <p class="timeline-text">María quedó leprosa. La murmuración daña la salud espiritual del grupo.</p>
-                </div>
-            </div>
-            <button id="btn-lesson-1" class="btn-action" onclick="completeTask('class1')"><span>Marcar como Leída</span></button>
-        </div>
-    </div>
-
     <div id="screen-doctrina" class="screen">
-        <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-            <button onclick="switchTab('tab-home')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); border-radius: 50%; width: 35px; height: 35px;">←</button>
-            <h2 style="margin: 0;">Fundamentos</h2>
+        <div class="header-top">
+            <button onclick="switchTab('tab-home')" style="background:none; border:1px solid var(--gold-solid); color:var(--gold-solid); border-radius:50%; width:35px; height:35px;">←</button>
+            <h1>Doctrina</h1>
         </div>
-        <div class="glass-panel">
-            <div class="accordion-item" onclick="toggleAccordion(this)">
-                <div class="accordion-header"><span class="accordion-title">1. Sola Scriptura</span> <span>▼</span></div>
-                <div class="accordion-content">La Biblia es la única autoridad final.</div>
-            </div>
-            <div class="accordion-item" onclick="toggleAccordion(this)">
-                <div class="accordion-header"><span class="accordion-title">2. Sola Fide</span> <span>▼</span></div>
-                <div class="accordion-content">Justificados solamente por la fe.</div>
-            </div>
+        <div class="glass-panel" style="padding: 20px;">
+            <h3 class="gold-text">LAS 5 SOLAS</h3>
+            <p>1. <b>Sola Scriptura:</b> Solo la Biblia.</p>
+            <p>2. <b>Sola Fide:</b> Solo por la Fe.</p>
+            <button class="btn-action" onclick="completeTask('doctrina')">Completar Estudio</button>
         </div>
-        <button id="btn-doctrina" class="btn-action" onclick="completeTask('doctrina')"><span>Completar Fundamento</span></button>
     </div>
 
     <div id="screen-ai" class="screen">
-        <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-            <button onclick="switchTab('tab-home')" style="background: none; border: 1px solid var(--gold-solid); color: var(--gold-solid); border-radius: 50%; width: 35px; height: 35px;">←</button>
-            <h2 style="margin: 0;">Sabiduría IA</h2>
+        <div class="header-top">
+            <button onclick="switchTab('tab-home')" style="background:none; border:1px solid var(--gold-solid); color:var(--gold-solid); border-radius:50%; width:35px; height:35px;">←</button>
+            <h1>Mentor IA</h1>
         </div>
         <div class="glass-panel" style="padding: 15px; background: rgba(30, 30, 50, 0.9);">
             <div id="chat-box" class="chat-container">
-                <div class="chat-bubble ai">Shalom. Soy tu asistente bíblico. Pregúntame sobre cualquier versículo.</div>
+                <div class="chat-bubble ai">Shalom. Soy tu mentor. ¿En qué puedo ayudarte?</div>
             </div>
             <div class="chat-input-area">
-                <input type="text" id="user-input" class="chat-input" placeholder="¿Qué dice la Biblia sobre...?" onkeypress="if(event.key === 'Enter') simulateAIResponse()">
+                <input type="text" id="user-input" class="chat-input" placeholder="Pregunta algo..." onkeypress="if(event.key === 'Enter') simulateAIResponse()">
                 <button class="btn-send" onclick="simulateAIResponse()">➤</button>
             </div>
         </div>
     </div>
 
+    <div id="screen-links" class="screen">
+        <div class="header-top">
+            <button onclick="switchTab('tab-home')" style="background:none; border:1px solid var(--gold-solid); color:var(--gold-solid); border-radius:50%; width:35px; height:35px;">←</button>
+            <h1>Conexión</h1>
+        </div>
+        <a href="https://wa.me/tu_numero" class="glass-panel" style="display:flex; align-items:center; padding:20px; text-decoration:none; color:white; margin-bottom:10px;">
+            <span style="font-size:1.5rem; margin-right:15px">💬</span>
+            <div><h3 style="margin:0;">WhatsApp</h3><p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Grupo de la Iglesia</p></div>
+        </a>
+        <a href="https://youtube.com/tu_canal" class="glass-panel" style="display:flex; align-items:center; padding:20px; text-decoration:none; color:white;">
+            <span style="font-size:1.5rem; margin-right:15px">📺</span>
+            <div><h3 style="margin:0;">YouTube</h3><p style="margin:0; font-size:0.8rem; color:var(--text-muted);">Clases en vivo</p></div>
+        </a>
+    </div>
+
     <div id="tab-profile" class="screen">
         <div class="header-top"><h1>Mi Perfil</h1></div>
         <div class="glass-panel" style="padding: 30px; text-align: center;">
-            <div style="font-size: 3rem; margin-bottom: 15px;">👤</div>
-            <input type="text" id="profile-name" style="background: transparent; border: none; color: white; font-size: 1.4rem; font-weight: bold; text-align: center; border-bottom: 1px solid var(--gold-solid);" value="Estudiante" onchange="saveName(this.value)">
-            <div id="rank-badge" style="margin-top: 15px; color: var(--gold-solid); font-weight: 800; text-transform: uppercase; font-size: 0.8rem;">Creyente Iniciado</div>
+            <div style="font-size: 3rem; margin-bottom: 10px;">👤</div>
+            <input type="text" id="profile-name" style="background:transparent; border:none; color:white; font-size:1.4rem; font-weight:bold; text-align:center; border-bottom:1px solid var(--gold-solid);" value="Estudiante" onchange="saveName(this.value)">
+            <div id="rank-badge" style="color:var(--gold-solid); font-weight:bold; margin-top:10px; text-transform:uppercase;">Creyente Iniciado</div>
         </div>
     </div>
 
@@ -252,7 +228,6 @@
     </nav>
 
     <script>
-        // --- 1. SALUDO ---
         function setGreeting() {
             const hour = new Date().getHours();
             const name = localStorage.getItem('uName') || 'Estudiante';
@@ -261,27 +236,26 @@
             document.getElementById('profile-name').value = name;
         }
 
-        // --- 2. NAVEGACIÓN ---
         function switchTab(id) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             if(id === 'tab-home') document.getElementById('nav-home').classList.add('active');
-            if(id === 'tab-classes' || id === 'screen-lesson-1') document.getElementById('nav-classes').classList.add('active');
+            if(id === 'tab-classes') document.getElementById('nav-classes').classList.add('active');
             if(id === 'tab-profile') document.getElementById('nav-profile').classList.add('active');
             window.scrollTo(0,0);
         }
 
-        function openLesson1() { switchTab('screen-lesson-1'); }
-        function openDoctrina() { switchTab('screen-doctrina'); }
         function openAI() { switchTab('screen-ai'); }
+        function openDoctrina() { switchTab('screen-doctrina'); }
 
-        // --- 3. LÓGICA IA ACTUALIZADA 2026 (gemini-2.5-flash) ---
         async function simulateAIResponse() {
-            const API_KEY = "AIzaSyDa203c7VieDov1aBG70Xg-Z606CWl3KKs"; 
+            // LUIS: CAMBIA ESTA LLAVE POR UNA NUEVA DE GOOGLE AI STUDIO
+            const API_KEY = "PON_TU_NUEVA_LLAVE_AQUI"; 
+            
             const input = document.getElementById('user-input');
             const text = input.value.trim();
-            if(!text) return;
+            if(!text || API_KEY.includes("PON_TU")) return;
 
             const chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `<div class="chat-bubble user">${text}</div>`;
@@ -294,8 +268,7 @@
             chatBox.appendChild(aiBubble);
 
             try {
-                // MODELO ACTUAL 2026: gemini-2.5-flash
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`, {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -304,33 +277,15 @@
                 });
 
                 const data = await response.json();
-                
                 if (data.error) {
-                    aiBubble.innerText = "Nota de Google: " + data.error.message;
+                    aiBubble.innerText = "Error de Google: " + data.error.message;
                 } else {
-                    const aiText = data.candidates[0].content.parts[0].text;
-                    aiBubble.innerText = "";
-                    let i = 0;
-                    const typing = setInterval(() => {
-                        aiBubble.innerText += aiText.charAt(i);
-                        chatBox.scrollTop = chatBox.scrollHeight;
-                        i++;
-                        if (i >= aiText.length) clearInterval(typing);
-                    }, 20);
+                    aiBubble.innerText = data.candidates[0].content.parts[0].text;
                 }
             } catch (error) {
                 aiBubble.innerText = "Error de red. Intenta de nuevo.";
             }
-        }
-
-        // --- 4. PROGRESO Y OTROS ---
-        function toggleAccordion(el) {
-            el.classList.toggle('active');
-        }
-
-        function saveName(val) {
-            localStorage.setItem('uName', val);
-            setGreeting();
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
         function completeTask(key) {
@@ -346,7 +301,7 @@
             if(localStorage.getItem('doctrina') === 'done') p += 50;
             document.getElementById('main-progress-bar').style.width = p + "%";
             document.getElementById('progress-percent').innerText = p + "%";
-            if(p >= 100) document.getElementById('rank-badge').innerText = "Obrero Aprobado";
+            if(p >= 100) document.getElementById('rank-badge').innerText = "Discípulo Fiel";
         }
 
         setGreeting();

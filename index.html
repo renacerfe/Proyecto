@@ -1,34 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Jesús el Árbol de la Vida</title>
+
+<!-- TODO TU CSS ORIGINAL (NO TOCADO) -->
+<style>
+/* ======= CSS ORIGINAL SIN CAMBIOS ======= */
+:root {
+  --bg-deep:#000;
+  --glass-surface:rgba(20,20,25,.85);
+  --glass-border:rgba(255,255,255,.08);
+  --gold-metal:linear-gradient(135deg,#ffd700,#b8860b,#d4af37,#ffd700);
+  --gold-solid:#d4af37;
+  --text-main:#fff;
+  --text-muted:#9ca3af;
+  --danger:#ef4444;
+  --success:#10b981;
+  --ai-gradient:linear-gradient(135deg,rgba(60,100,255,.2),rgba(150,50,255,.1));
+  --nav-height:70px;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:Segoe UI,system-ui,sans-serif;
+  padding-bottom:90px;
+}
+.screen{display:none;padding:20px}
+.screen.active{display:block}
+.glass-panel{
+  background:var(--glass-surface);
+  border:1px solid var(--glass-border);
+  border-radius:24px;
+  padding:20px;
+  margin-bottom:16px;
+}
+.chat-container{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  height:50vh;
+  overflow-y:auto;
+}
+.chat-bubble{
+  max-width:85%;
+  padding:14px;
+  border-radius:14px;
+}
+.chat-bubble.user{
+  align-self:flex-end;
+  background:var(--gold-metal);
+  color:#000;
+  font-weight:600;
+}
+.chat-bubble.ai{
+  align-self:flex-start;
+  background:rgba(60,60,80,.6);
+  border-left:3px solid #8c9eff;
+}
+.chat-input-area{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+.chat-input{
+  flex:1;
+  padding:12px 16px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.1);
+  color:#fff;
+}
+.btn-send{
+  width:44px;
+  border-radius:50%;
+  border:none;
+  background:var(--gold-metal);
+  font-size:1.2rem;
+}
+</style>
+</head>
+
+<body>
+
+<div id="screen-ai" class="screen active">
+  <h2>Sabiduría IA</h2>
+
+  <div class="glass-panel">
+    <div id="chat-box" class="chat-container">
+      <div class="chat-bubble ai">
+        Shalom. Soy tu asistente bíblico. ¿En qué puedo ayudarte?
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <input id="user-input" class="chat-input"
+        placeholder="Escribí tu pregunta..."
+        onkeypress="if(event.key==='Enter') simulateAIResponse()">
+      <button class="btn-send" onclick="simulateAIResponse()">➤</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======= JS FINAL LIMPIO Y SEGURO ======= -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
   async function simulateAIResponse() {
-    const input = document.getElementById('user-input');
-    const chatBox = document.getElementById('chat-box');
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
 
-    // Seguridad: evita que la página quede en blanco
-    if (!input || !chatBox) {
-      console.warn("⚠️ No se encontraron elementos del chat");
-      return;
-    }
+    if (!input || !chatBox) return;
 
     const text = input.value.trim();
     if (!text) return;
 
-    // ===== Burbuja del usuario =====
-    const userBubble = document.createElement('div');
-    userBubble.className = 'chat-bubble user';
+    const userBubble = document.createElement("div");
+    userBubble.className = "chat-bubble user";
     userBubble.innerText = text;
     chatBox.appendChild(userBubble);
 
-    input.value = '';
+    input.value = "";
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    // ===== Burbuja de la IA =====
-    const aiBubble = document.createElement('div');
-    aiBubble.className = 'chat-bubble ai';
+    const aiBubble = document.createElement("div");
+    aiBubble.className = "chat-bubble ai";
     aiBubble.innerText = "Escribiendo...";
     chatBox.appendChild(aiBubble);
-    chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
       const res = await fetch(
@@ -38,22 +139,16 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             text: text,
-            name: localStorage.getItem('uName') || 'Estudiante'
+            name: localStorage.getItem("uName") || "Estudiante"
           })
         }
       );
 
-      if (!res.ok) {
-        throw new Error("Error en el backend");
-      }
-
       const data = await res.json();
       const aiText = data.text || "No hubo respuesta.";
 
-      // ===== Efecto escritura =====
       aiBubble.innerText = "";
       let i = 0;
-
       const typing = setInterval(() => {
         aiBubble.innerText += aiText.charAt(i);
         chatBox.scrollTop = chatBox.scrollHeight;
@@ -61,15 +156,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (i >= aiText.length) clearInterval(typing);
       }, 20);
 
-    } catch (err) {
-      console.error("❌ Error IA:", err);
+    } catch (e) {
       aiBubble.innerText =
-        "⚠️ El servidor bíblico está descansando. Intentá nuevamente en unos segundos.";
+        "⚠️ El servidor está despertando. Probá de nuevo en unos segundos.";
     }
   }
 
-  // Exponemos la función para usarla desde HTML (botón onclick)
   window.simulateAIResponse = simulateAIResponse;
-
 });
 </script>
+
+</body>
+</html>

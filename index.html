@@ -1,3 +1,4 @@
+<script>
 async function simulateAIResponse() {
     const input = document.getElementById('user-input');
     const text = input.value.trim();
@@ -21,21 +22,26 @@ async function simulateAIResponse() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        const res = await fetch("https://TU-BACKEND.onrender.com/ia", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                text,
-                name: localStorage.getItem('uName') || 'Estudiante'
-            })
-        });
+        const res = await fetch(
+            "https://jesus-arbol-vida-backend.onrender.com/ia",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    text,
+                    name: localStorage.getItem('uName') || 'Estudiante'
+                })
+            }
+        );
 
-        if (!res.ok) throw new Error("Error backend");
+        if (!res.ok) {
+            throw new Error("Error en el servidor");
+        }
 
         const data = await res.json();
         const aiText = data.text || "No hubo respuesta.";
 
-        // Efecto escritura (lo conservamos)
+        // Efecto escritura (se conserva)
         aiBubble.innerText = "";
         let i = 0;
         const typing = setInterval(() => {
@@ -47,6 +53,8 @@ async function simulateAIResponse() {
 
     } catch (err) {
         console.error(err);
-        aiBubble.innerText = "No pude conectarme con el servidor de sabiduría.";
+        aiBubble.innerText =
+            "⚠️ No pude conectarme con el servidor bíblico. Intentá de nuevo.";
     }
 }
+</script>

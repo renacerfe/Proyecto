@@ -1,20 +1,29 @@
 <script>
-async function simulateAIResponse() {
+document.addEventListener("DOMContentLoaded", () => {
+
+  async function simulateAIResponse() {
     const input = document.getElementById('user-input');
+    const chatBox = document.getElementById('chat-box');
+
+    // Seguridad: evita que la página quede en blanco
+    if (!input || !chatBox) {
+      console.warn("⚠️ No se encontraron elementos del chat");
+      return;
+    }
+
     const text = input.value.trim();
     if (!text) return;
 
-    const chatBox = document.getElementById('chat-box');
-
-    // Burbuja usuario
+    // ===== Burbuja del usuario =====
     const userBubble = document.createElement('div');
     userBubble.className = 'chat-bubble user';
     userBubble.innerText = text;
     chatBox.appendChild(userBubble);
+
     input.value = '';
     chatBox.scrollTop = chatBox.scrollHeight;
 
-    // Burbuja IA
+    // ===== Burbuja de la IA =====
     const aiBubble = document.createElement('div');
     aiBubble.className = 'chat-bubble ai';
     aiBubble.innerText = "Escribiendo...";
@@ -22,39 +31,45 @@ async function simulateAIResponse() {
     chatBox.scrollTop = chatBox.scrollHeight;
 
     try {
-        const res = await fetch(
-            "https://jesus-arbol-vida-backend.onrender.com/ia",
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    text,
-                    name: localStorage.getItem('uName') || 'Estudiante'
-                })
-            }
-        );
-
-        if (!res.ok) {
-            throw new Error("Error en el servidor");
+      const res = await fetch(
+        "https://jesus-arbol-vida-backend.onrender.com/ia",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: text,
+            name: localStorage.getItem('uName') || 'Estudiante'
+          })
         }
+      );
 
-        const data = await res.json();
-        const aiText = data.text || "No hubo respuesta.";
+      if (!res.ok) {
+        throw new Error("Error en el backend");
+      }
 
-        // Efecto escritura (se conserva)
-        aiBubble.innerText = "";
-        let i = 0;
-        const typing = setInterval(() => {
-            aiBubble.innerText += aiText.charAt(i);
-            chatBox.scrollTop = chatBox.scrollHeight;
-            i++;
-            if (i >= aiText.length) clearInterval(typing);
-        }, 20);
+      const data = await res.json();
+      const aiText = data.text || "No hubo respuesta.";
+
+      // ===== Efecto escritura =====
+      aiBubble.innerText = "";
+      let i = 0;
+
+      const typing = setInterval(() => {
+        aiBubble.innerText += aiText.charAt(i);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        i++;
+        if (i >= aiText.length) clearInterval(typing);
+      }, 20);
 
     } catch (err) {
-        console.error(err);
-        aiBubble.innerText =
-            "⚠️ No pude conectarme con el servidor bíblico. Intentá de nuevo.";
+      console.error("❌ Error IA:", err);
+      aiBubble.innerText =
+        "⚠️ El servidor bíblico está descansando. Intentá nuevamente en unos segundos.";
     }
-}
+  }
+
+  // Exponemos la función para usarla desde HTML (botón onclick)
+  window.simulateAIResponse = simulateAIResponse;
+
+});
 </script>
